@@ -1,0 +1,10 @@
+.auction-section{
+    background-color: rgb(45,21,103);
+
+}
+
+.account-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

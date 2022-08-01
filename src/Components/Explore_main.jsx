@@ -1,31 +1,32 @@
-import React from 'react'
-import Explore from './Explore/Explore';
+import React from "react";
+import Explore from "./Explore/Explore";
 import { Link } from "react-router-dom";
-
 
 function Explore_main() {
   return (
     <div>
-        <section class="page-header-section style-1">
+      <section class="page-header-section style-1">
         <div class="container">
-            <div class="page-header-content">
-                <div class="page-header-inner">
-                    <div class="page-title">
-                        <h2>Explore </h2>
-                    </div>
-                    <ol class="breadcrumb">
-                        <li><Link to="/">Home</Link></li>
-                        <li class="active">Explore</li>
-                    </ol>
-                </div>
+          <div class="page-header-content">
+            <div class="page-header-inner">
+              <div class="page-title">
+                <h2>Explore </h2>
+              </div>
+              <ol class="breadcrumb">
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li class="active">Explore</li>
+              </ol>
             </div>
+          </div>
         </div>
-    </section>
-    <Explore />
+      </section>
 
+   
+      <Explore />
 
-
-    {/* <section class="auction-section padding-bottom padding-top">
+      {/* <section class="auction-section padding-bottom padding-top">
          <div class="container">
             <div class="section-header style-4">
                <div class="header-shape"><span></span></div>
@@ -326,7 +327,7 @@ function Explore_main() {
          </div>
       </section> */}
     </div>
-  )
+  );
 }
 
-export default Explore_main
+export default Explore_main;

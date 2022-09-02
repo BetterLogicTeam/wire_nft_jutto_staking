@@ -136,3 +136,35 @@
         padding: 7px;
     } 
 }
+
+.loginbtn {
+    background: #f4cd44 !important;
+    color: #000 !important;
+}
+
+.boxset{
+    padding: 8px 6px;
+    border: unset;
+    width: 86%;
+    border: 1px solid #4f4d4d;
+    border-radius: 4px;
+}
+.bord{
+    border: solid 2px #000;
+    border-radius: 8px;
+    background-color: red;
+    z-index: 999;
+}
+.bordd{
+    border: solid 2px #000;
+    border-radius: 8px;
+    background-color: red;
+    z-index: 999;
+}
+.bordd .input1{
+    width: 50px;
+}
+.modelRegister{
+    top:0;
+    left: 0;
+}

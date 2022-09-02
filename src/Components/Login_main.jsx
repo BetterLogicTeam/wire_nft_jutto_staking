@@ -1,9 +1,45 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
+import { loadWeb3 } from "../api.js";
 import { FaTelegram } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import './Login_main.css'
+import axios from 'axios';
 
-function Login_main() {
+function Login_main({notify}) {
+    const [uid,setuid] = useState();    
+    const [address,setaddress] = useState('');
+    const [connected,setconnected] = useState('MetaMask is not connected..!..Wait...')
+
+    const callapi = async () => {
+        let res =  await axios.get('https://ulematic-api.herokuapp.com/login?id='+uid);
+        console.log(res)
+        if(res.data.success == true)
+        {
+         console.log(res.data)
+         notify('Login Successfully')
+        }
+     }
+
+    const  ConnectToMetaMask = async ()=>{
+    let acc = await loadWeb3();
+    if(acc == 'No Wallet')
+    {
+      notify('No Wallet')
+    }
+    else if(acc == 'Wrong Network')
+    {
+      notify('Wrong Network')
+    }
+    else{
+    //   notify("Wallet Connected");
+      setaddress(acc)
+      setconnected('MetaMask is connected... Ready To Go')
+    }
+  }
+
+  useEffect(()=>{
+    ConnectToMetaMask();
+  },[])
   return (
     <div className='log_main'>
         <div className="log">
@@ -16,12 +52,17 @@ function Login_main() {
                         <p className='peera'>Automatic login if you have MetaMask wallet:</p>
 
                         <img src="metamask.png" width="70px" alt="" />
-                        <p className='peera2'>MetaMask is not connected..!..Wait...</p>
+                        <p className='peera2'>{connected}</p>
 
                         <div className="batan">
                             <div className="btn log_batan">Automatic Sign up</div>
-                            <div className="btn log_batan">Please enter ID or Metamask address</div>
-                            <div className="btn log_batan">Login</div>
+                            <input className='btn log_batan' placeholder='Please enter ID or Metamask address' onChange={(e)=>{
+                                        setuid(e.target.value)
+                                    }} />
+                            {/* <div className=""></div> */}
+                            <button className="btn log_batan" onClick={()=>{
+                                callapi()
+                            }}>Login</button>
                         </div>
                     </div>
                     </div>

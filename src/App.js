@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import {contract_abi,contract_address} from './Utils/contract'
 import Header from './Components/Header/Header';
 import Landing from './Components/Landing/Landing';
 import About from './Components/About/About';
@@ -22,14 +23,18 @@ import Tokenomics_main from "./Components/Tokenomics_main";
 import Contact_main from "./Components/Contact_main";
 import Login_main from "./Components/Login_main";
 import Register_main from "./Components/Register_main";
+import 'react-toastify/dist/ReactToastify.css';
 // import Login from "./Components/Login/index"
 
-
+import { ToastContainer, toast } from 'react-toastify';
+const notify = (msg) => toast(msg);
 
 function App() {
+
   return (
     <div className="">
-      <BrowserRouter>
+      <BrowserRouter>      
+      <ToastContainer />
        {/* <Header /> */}
         <Routes>
         <Route  />
@@ -39,16 +44,18 @@ function App() {
           <Route exact path="/How_to_play_main" element={<How_to_play_main />} />
           <Route exact path="/Tokenomics_main" element={<Tokenomics_main />} />
           <Route exact path="/Contact_main" element={<Contact_main />} />
-          <Route exact path="/Login_main" element={<Login_main />} />
-          <Route exact path="/Register_main" element={<Register_main />} />
+          <Route exact path="/Login_main" element={<Login_main notify={notify} />} />
+          <Route exact path="/Register_main" element={<Register_main notify={notify} />} />
           <Route />
-          
 
         
         </Routes>
+        <ToastContainer />
         {/* <Footer /> */}
       </BrowserRouter>
+      
     </div>
+    
   );
 }
 

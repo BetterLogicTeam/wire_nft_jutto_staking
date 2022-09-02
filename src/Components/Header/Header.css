@@ -1,5 +1,5 @@
 .home img{
-    width: 200px;
+    width: 170px;
 }
 
 .nev{
@@ -8,15 +8,16 @@
     position: fixed;
     top: 0;
     z-index: 5;
-    background-color: rgb(45,21,103);
+    background-color: rgb(13,10,138);
 }
 
 .alna{
-    margin-left: 4rem;
+    margin-left: 11rem;
 }
 
 .hxn{
-    margin-right: 15px;
+    margin-right: 23px;
+    font-size: 17px;
 }
 
 @media screen and (max-width:800px) {

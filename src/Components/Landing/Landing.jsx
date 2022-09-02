@@ -19,16 +19,15 @@ function Landing() {
                 <div class="banner-content">
                   <h1>
                     {" "}
-                    <span class="theme-color-4">Create</span>, Collect And{" "}
+                    <span class="theme-color-4">Buy</span>, sell And{" "}
                     <span class="theme-color-4">
                       {" "}
-                      <br></br> Sell
+                      <br></br> 
                     </span>{" "}
-                    Digital Items.
+                    Collect NFTs.
                   </h1>
                   <p>
-                    Digital Marketplace For Crypto Collectibles And Non-Fungible
-                    Tokens. Buy, Sell, And Discover Exclusive Digital Assets.
+                  The world's largest digital marketplace for crypto collectibles and non-fungible tokens
                   </p>
                   <div class="banner-btns d-flex flex-wrap">
                     {/* <a data-blast="bgColor" href="explore.html"
@@ -55,36 +54,36 @@ function Landing() {
                 >
                   <SwiperSlide className="carde">
                     <Card className="inner" style={{ width: "22rem" }}>
-                      <Card.Img variant="top" className="emg" src="1.png" />
+                      <Card.Img variant="top" className="emg" src="j1.png" />
                       <Card.Body className="bdy">
-                        <Card.Title className="tittl">Wire NFT</Card.Title>
+                        <Card.Title className="tittl">Ule Tron</Card.Title>
                       </Card.Body>
                     </Card>
                   </SwiperSlide>
 
                   <SwiperSlide className="carde">
                     <Card className="inner" style={{ width: "22rem" }}>
-                      <Card.Img variant="top" className="emg" src="2.png" />
+                      <Card.Img variant="top" className="emg" src="j2.png" />
                       <Card.Body className="bdy">
-                        <Card.Title className="tittl">Wire NFT</Card.Title>
+                        <Card.Title className="tittl">Ule Tron</Card.Title>
                       </Card.Body>
                     </Card>
                   </SwiperSlide>
 
                   <SwiperSlide className="carde">
                     <Card className="inner" style={{ width: "22rem" }}>
-                      <Card.Img variant="top" className="emg" src="3.png" />
+                      <Card.Img variant="top" className="emg" src="j3.png" />
                       <Card.Body className="bdy">
-                        <Card.Title className="tittl">Wire NFT</Card.Title>
+                        <Card.Title className="tittl">Ule Tron</Card.Title>
                       </Card.Body>
                     </Card>
                   </SwiperSlide>
 
                   <SwiperSlide className="carde">
                     <Card className="inner" style={{ width: "22rem" }}>
-                      <Card.Img variant="top" className="emg" src="4.png" />
+                      <Card.Img variant="top" className="emg" src="j4.png" />
                       <Card.Body className="bdy">
-                        <Card.Title className="tittl">Wire NFT</Card.Title>
+                        <Card.Title className="tittl">Ule Tron</Card.Title>
                       </Card.Body>
                     </Card>
                   </SwiperSlide>
@@ -105,9 +104,9 @@ function Landing() {
           </div>
           <div class="wallet-inner">
             <div class="row g-3">
-              <div class="col-lg-2 col-sm-4 col-6">
-                <div class="wallet-item home-4">
-                  <div class="wallet-item-inner text-center">
+              <div class="col-lg-3 col-sm-5 col-7 ">
+                <div class="wallet-item home-4 jj">
+                  <div class="wallet-item-inner jj text-center">
                     <div class="wallet-thumb">
                       <a href="#">
                         <img src="06.png" alt="wallet-img" />
@@ -121,55 +120,55 @@ function Landing() {
                   </div>
                 </div>
               </div>
-              <div class="col-lg-2 col-sm-4 col-6">
+              <div class="col-lg-3 col-sm-5 col-7">
                 <div class="wallet-item home-4">
                   <div class="wallet-item-inner text-center">
                     <div class="wallet-thumb">
                       <a href="#">
-                        <img src="07.png" alt="wallet-img" />
+                        <img src="w1.png" alt="wallet-img" />
                       </a>
                     </div>
                     <div class="wallet-content">
                       <h5>
-                        <a href="#">Binance</a>
+                        <a href="#">Alpha Wallet</a>
                       </h5>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-2 col-sm-4 col-6">
+              <div class="col-lg-3 col-sm-5 col-7">
                 <div class="wallet-item home-4">
                   <div class="wallet-item-inner text-center">
                     <div class="wallet-thumb">
                       <a href="#">
-                        <img src="08.png" alt="wallet-img" />
+                        <img src="w2.png" alt="wallet-img" />
                       </a>
                     </div>
                     <div class="wallet-content">
                       <h5>
-                        <a href="#">Formatic</a>
+                        <a href="#">Trust Wallet</a>
                       </h5>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-2 col-sm-4 col-6">
+              <div class="col-lg-3 col-sm-5 col-7">
                 <div class="wallet-item home-4">
                   <div class="wallet-item-inner text-center">
                     <div class="wallet-thumb">
                       <a href="#">
-                        <img src="01.png" alt="wallet-img" />
+                        <img src="w3.png" alt="wallet-img" />
                       </a>
                     </div>
                     <div class="wallet-content">
                       <h5>
-                        <a href="#">Autherum</a>
+                        <a href="#">Token Pocket</a>
                       </h5>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-2 col-sm-4 col-6">
+              {/* <div class="col-lg-2 col-sm-4 col-6">
                 <div class="wallet-item home-4">
                   <div class="wallet-item-inner text-center">
                     <div class="wallet-thumb">
@@ -200,7 +199,7 @@ function Landing() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

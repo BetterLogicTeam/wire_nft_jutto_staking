@@ -13,7 +13,7 @@ function CollapsibleExample() {
       <Container>
         <Navbar.Brand href="#home" className="home">
           <Link to="/">
-            <img src="logo-3.png" alt="" />
+            <img src="favicon.png" alt="" />
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle>
@@ -33,12 +33,12 @@ function CollapsibleExample() {
             <Nav.Link href="#how_to_play" className="hxn text-white">
               <Link to="/How_to_play_main">How To Play</Link>
             </Nav.Link>
-            <Nav.Link href="#tokenomics" className="hxn text-white">
+            {/* <Nav.Link href="#tokenomics" className="hxn text-white">
               <Link to="/Tokenomics_main">Tokenomics</Link>
             </Nav.Link>
             <Nav.Link href="#pricing" className="hxn text-white">
               Marketplace
-            </Nav.Link>
+            </Nav.Link> */}
           </Nav>
           <Nav className="mt-2 emn">
             <Nav.Link href="#login" className="text-white">

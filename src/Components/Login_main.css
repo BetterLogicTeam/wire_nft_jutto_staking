@@ -1,0 +1,138 @@
+.log_main{
+    background-image: url(../assets/images/loginbg.jpg) !important;
+    background-color: black;
+    background-position: center;
+    background-size: cover;
+    /* width: 100%; */
+    padding: 90px 0;
+    height: 100vh;
+}
+
+.log_con{
+    /* margin-top: 130px; */
+    /* margin-bottom: 130px; */
+}
+
+.main_form{
+    background-color: white;
+    color: black;
+    padding: 20px;
+    height: 80vh;
+    text-align: center;
+    border: 2px solid rgb(251,197,11);
+    margin-left: -24px;
+}
+
+.main_form:hover{
+    box-shadow: 0px 0px 53px 15px rgb(235 194 31);
+}
+
+.main_form2:hover{
+    box-shadow: 0px 0px 53px 15px rgb(235 194 31);
+}
+
+.main_form2{
+    background-color: white;
+    color: black;
+    /* padding: 69px; */
+    padding: 20px;
+    height: 80vh;
+    text-align: center;
+    border: 2px solid rgb(251,197,11);
+    margin-left: -24px;
+}
+
+.toll{
+    font-size: 15px;
+    border: 1px solid black;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.for_emg img{
+    width: 140px;
+}
+
+.icn_tele{
+    font-size: 27px;
+    margin-bottom: 10px;
+}
+
+.query{
+    font-size: 16px;
+}
+
+
+
+.hh{
+    color: black;
+}
+
+.contact-form-wrapper{
+    background-color: rgb(42, 39, 197);
+}
+
+
+.contact-info-wrapper{
+    background-color: rgb(42, 39, 197);
+
+}
+
+.batan{
+    display: flex;
+    flex-direction: column;
+}
+
+.log_batan{
+    background-color: rgb(251,197,11);
+    padding:10px 0px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.peera{
+    font-size: 13px;
+}
+
+.peera2{
+    font-size: 13px;
+    color: red;
+}
+
+.hom{
+    /* margin-top: 10px; */
+    padding: 10px 20px;
+}
+
+@media screen and (max-width:500px) {
+    .main_form2{
+        margin-left: 0;
+    }
+
+    .main_form{
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 501px) and (max-width: 768px) {
+    .for_emg img{
+        width: 100px;
+    }
+
+    .hh{
+        font-size: 20px;
+    }
+
+    .peera2{
+        font-size: 10px;
+    }
+
+    .peera{
+        font-size: 10px;
+    }
+
+    .toll{
+        font-size: 12px;
+        padding: 7px;
+    } 
+}

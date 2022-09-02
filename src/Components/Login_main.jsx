@@ -1,59 +1,58 @@
-import React from 'react'
+import React from 'react';
+import { FaTelegram } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import './Login_main.css'
 
 function Login_main() {
   return (
-    <div class="theme-orange pt-5 mt-5">
-        <div class="wrapper">
-        <section class="login-content">
-            <div class="container h-100">
-                <div class="row align-items-center justify-content-center h-100">
-                    <div class="col-12">
-                        <div class="row align-items-center">
-                            <div class="col-lg-6">
-                                <h2 class="mb-2">Sign in your account</h2>
-                                <p>To Keep connected with us please login with your personal info.</p>
-                               
-                                    <div class="row">
-                                        <div id="error-msg"></div>
-                                        <div class="col-lg-12">
-                                            <div class="floating-label form-group">
-                                                <input type="text" class="floating-input form-control" name="uid" id="uid" required/>
+    <div className='log_main'>
+        <div className="log">
+            <div className="container log_con">
+                <div className="row ">
+                    <div className="col-md-2"></div>
+                    <div className="col-md-4 hvr">
+                    <div className="main_form">
+                        <h2 className='hh mb-3'>Login</h2>
+                        <p className='peera'>Automatic login if you have MetaMask wallet:</p>
 
-                                                <label>Login Id</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class="floating-label form-group">
-                                                <input type="password" class="floating-input  form-control" name="password" id="password" required/>
-                                                <label>Password</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="custom-control custom-checkbox mb-3">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck1"/>
-                                                <label class="custom-control-label" for="customCheck1">Remember Me</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 rtl-left">
-                                            <a href="ForgotPassword.html" class="text-primary float-right">Forgot Password?</a>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary" value="1" id="dloginshine" name="submitRegisterMember">Sign In<span id="spinner1" style={{visibility: "hidden"}}><i class="fa fa-spinner fa-spin"></i></span></button>
-                                
-                                <p class="mt-3">
-                                    Create an Account <a href="register.html" class="text-primary">Sign Up</a>
-                                </p>
+                        <img src="metamask.png" width="70px" alt="" />
+                        <p className='peera2'>MetaMask is not connected..!..Wait...</p>
 
-                            </div>
-                            <div class="col-lg-6 mb-lg-0 mb-4 mt-lg-0 mt-4">
-                                <img src="001.png" class="img-fluid w-80" alt=""/>
-                            </div>
+                        <div className="batan">
+                            <div className="btn log_batan">Automatic Sign up</div>
+                            <div className="btn log_batan">Please enter ID or Metamask address</div>
+                            <div className="btn log_batan">Login</div>
                         </div>
+                    </div>
+                    </div>
+
+                    <div className="col-md-4 hvr">
+                    <div className="main_form2">
+                       <div className="for_emg">
+                       <img src="favicon.png" className='hh mb-3'></img>
+                       </div>
+                        <p className='peera'>Follow us on Telegram</p>
+                        <div className="icn_tele">
+                        <FaTelegram></FaTelegram>
+                        </div>
+                        <div className='query pb-3'>Any query you can get support:</div>
+
+                        {/* <img src="metamask.png" width="70px" alt="" />
+                        <p className='peera2'>MetaMask is not connected..!..Wait...</p> */}
+
+                        <div className="batan2">
+                            <div className="btn toll">Support Toll-Free 1800-120-4099</div>
+                            {/* <div className="btn log_batan">Please enter ID or Metamask address</div> */}
+                         <Link to="/">   <div className="btn log_batan hom">Go To Home</div></Link>
+
+                        <p className='peera2 pt-3'>Please Install MetaMask!</p>
+
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
     </div>
   )
 }

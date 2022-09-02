@@ -22,6 +22,7 @@ import Tokenomics_main from "./Components/Tokenomics_main";
 import Contact_main from "./Components/Contact_main";
 import Login_main from "./Components/Login_main";
 import Register_main from "./Components/Register_main";
+// import Login from "./Components/Login/index"
 
 
 
@@ -29,9 +30,9 @@ function App() {
   return (
     <div className="">
       <BrowserRouter>
-       <Header />
+       {/* <Header /> */}
         <Routes>
-        <Route />
+        <Route  />
           <Route exact path="/" element={<Index_main />} />
           <Route exact path="/About_main" element={<About_main />} />
           <Route exact path="/Explore_main" element={<Explore_main />} />
@@ -45,7 +46,7 @@ function App() {
 
         
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </BrowserRouter>
     </div>
   );

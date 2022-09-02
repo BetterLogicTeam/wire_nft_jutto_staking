@@ -15,7 +15,7 @@ function About() {
             <div class="row g-5 align-items-center flex-md-row-reverse">
                 <div class="col-lg-6">
                     <div class="account-img">
-                        <img src="1.webp" alt="shape-image"/>
+                        <img src="about_1.webp" alt="shape-image"/>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -23,7 +23,7 @@ function About() {
                         <h1 class="abput"> <span class="theme-color-5">
                            About</span>Us
                         </h1>
-                        <p>Wire Nft is a racing game with futuristic mythological styling. Pega (the horses) are descendants of the mighty Pegasus. In this game, players will participate in PvP format races to win rewards in the platforms native utility token, VIS (Vigorus).
+                        <p>UleTron network is the premier marketplace for UleTron, which are digital items you can truly own. Digital Items have existed for a long time, but never like this can be farm.
                         </p>
                         <div class="banner-btns d-flex flex-wrap">
                            <a data-blast="bgColor" href="about.html"
@@ -41,7 +41,7 @@ function About() {
       </section>
 
 
-      <section class="auction-section padding-bottom">
+      {/* <section class="auction-section padding-bottom">
          <div class="container">
                 <div class="explore-wrapper">
                     <div class="row justify-content-center gx-4 gy-3">
@@ -60,7 +60,7 @@ function About() {
                                         </div>
                                         
                                     </div>
-                                    {/* <!-- nft-bottom part --> */}
+                                  
                                     <div class="nft-item-bottom">
                                      
                                         <div class="nft-content">
@@ -92,7 +92,7 @@ function About() {
                                         </div>
                                         
                                     </div>
-                                    {/* <!-- nft-bottom part --> */}
+                                   
                                     <div class="nft-item-bottom">
                                      
                                         <div class="nft-content">
@@ -124,7 +124,7 @@ function About() {
                                         </div>
                                         
                                     </div>
-                                    {/* <!-- nft-bottom part --> */}
+                               
                                     <div class="nft-item-bottom">
                                      
                                         <div class="nft-content">
@@ -180,7 +180,7 @@ function About() {
         </div>
        </div>
        </div>
-      </section>
+      </section> */}
     </div>
   )
 }

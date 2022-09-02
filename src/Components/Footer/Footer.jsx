@@ -66,10 +66,9 @@ function Footer() {
                         <div class="footer-link-item">
                            <h5>Quick Links</h5>
                            <ul class="footer-link-list">
-                              <li><a href="#" class="footer-link">White Paper</a></li>
-                              <li><Link to="/Contact_main" class="footer-link">User Support</Link></li>
-                              <li><a href="#" class="footer-link">Report a Bug</a></li>
+                              
                               <li><Link to="/Explore_main" class="footer-link">Explore</Link></li>
+                              <li><a href="contact.html" class="footer-link"><Link to="/Contact_main">Contact Us</Link> </a></li>
                               
                            </ul>
                         </div>
@@ -78,11 +77,11 @@ function Footer() {
                         <div class="footer-link-item">
                            <h5>Quick Links</h5>
                            <ul class="footer-link-list">
-                              <li><a href="#" class="footer-link">Buy Wire NFT</a></li>
-                              <li><a href="contact.html" class="footer-link"><Link to="/Contact_main">Contact Us</Link> </a></li>
+                              {/* <li><a href="#" class="footer-link">Buy Wire NFT</a></li> */}
+                              
                               <li><a href="#" class="footer-link">Terms & Services</a></li>
                               <li><a href="#" class="footer-link">Privacy Policy</a></li>
-                              <li><a href="#" class="footer-link">Media Kits</a></li>
+                              {/* <li><a href="#" class="footer-link">Media Kits</a></li> */}
                            </ul>
                         </div>
                      </div>
@@ -90,9 +89,9 @@ function Footer() {
                         <div class="footer-link-item">
                            <h5>Follow Us</h5>
                            <ul class="footer-link-list">
-                              <li><a href="https://www.facebook.com/Wireswap-102238962331272" class="footer-link"><TiSocialFacebook></TiSocialFacebook> Facebook</a></li>
+                              {/* <li><a href="https://www.facebook.com/Wireswap-102238962331272" class="footer-link"><TiSocialFacebook></TiSocialFacebook> Facebook</a></li> */}
                               <li><a href="https://twitter.com/wireswap" class="footer-link"><TiSocialTwitter></TiSocialTwitter> Twitter</a></li>
-                              <li><a href="https://www.reddit.com/user/Wireswap" class="footer-link"><ImReddit></ImReddit> Reddit</a></li>
+                              {/* <li><a href="https://www.reddit.com/user/Wireswap" class="footer-link"><ImReddit></ImReddit> Reddit</a></li> */}
                               <li><a href="https://t.me/Wireswap" class="footer-link"><FaTelegram></FaTelegram> Telegram</a></li>
                               
                            </ul>
@@ -104,7 +103,7 @@ function Footer() {
          </div>
          <div class="footer-bottom">
             <div class="container">
-               <p class="text-center py-4 mb-0">All rights reserved &copy; Wire NFT  
+               <p class="text-center py-4 mb-0">All rights reserved &copy; uletron.live  
                </p>
             </div>
          </div>

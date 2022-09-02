@@ -39,49 +39,49 @@ function Explore() {
               >
                 <SwiperSlide className="carde2">
                   <Card className="inner2" style={{ width: "12rem" }}>
-                    <Card.Img variant="top" className="emg2" src="1.png" />
+                    <Card.Img variant="top" className="emg2" src="j1.png" />
                   </Card>
                 </SwiperSlide>
 
                 <SwiperSlide className="carde2">
                   <Card className="inner2" style={{ width: "12rem" }}>
-                    <Card.Img variant="top" className="emg2" src="2.png" />
+                    <Card.Img variant="top" className="emg2" src="j2.png" />
                   </Card>
                 </SwiperSlide>
 
                 <SwiperSlide className="carde2">
                   <Card className="inner2" style={{ width: "12rem" }}>
-                    <Card.Img variant="top" className="emg2" src="3.png" />
+                    <Card.Img variant="top" className="emg2" src="j3.png" />
                   </Card>
                 </SwiperSlide>
 
                 <SwiperSlide className="carde2">
                   <Card className="inner2" style={{ width: "12rem" }}>
-                    <Card.Img variant="top" className="emg2" src="4.png" />
+                    <Card.Img variant="top" className="emg2" src="j4.png" />
                   </Card>
                 </SwiperSlide>
 
                 <SwiperSlide className="carde2">
                   <Card className="inner2" style={{ width: "12rem" }}>
-                    <Card.Img variant="top" className="emg2" src="1.png" />
+                    <Card.Img variant="top" className="emg2" src="j1.png" />
                   </Card>
                 </SwiperSlide>
 
                 <SwiperSlide className="carde2">
                   <Card className="inner2" style={{ width: "12rem" }}>
-                    <Card.Img variant="top" className="emg2" src="2.png" />
+                    <Card.Img variant="top" className="emg2" src="j2.png" />
                   </Card>
                 </SwiperSlide>
 
                 <SwiperSlide className="carde2">
                   <Card className="inner2" style={{ width: "12rem" }}>
-                    <Card.Img variant="top" className="emg2" src="3.png" />
+                    <Card.Img variant="top" className="emg2" src="j3.png" />
                   </Card>
                 </SwiperSlide>
 
                 <SwiperSlide className="carde2">
                   <Card className="inner2" style={{ width: "12rem" }}>
-                    <Card.Img variant="top" className="emg2" src="4.png" />
+                    <Card.Img variant="top" className="emg2" src="j4.png" />
                   </Card>
                 </SwiperSlide>
               </Swiper>
@@ -107,49 +107,49 @@ function Explore() {
               >
                 <SwiperSlide className="carde2">
                   <Card className="inner2" style={{ width: "12rem" }}>
-                    <Card.Img variant="top" className="emg2" src="1.png" />
+                    <Card.Img variant="top" className="emg2" src="j1.png" />
                   </Card>
                 </SwiperSlide>
 
                 <SwiperSlide className="carde2">
                   <Card className="inner2" style={{ width: "12rem" }}>
-                    <Card.Img variant="top" className="emg2" src="2.png" />
+                    <Card.Img variant="top" className="emg2" src="j2.png" />
                   </Card>
                 </SwiperSlide>
 
                 <SwiperSlide className="carde2">
                   <Card className="inner2" style={{ width: "12rem" }}>
-                    <Card.Img variant="top" className="emg2" src="3.png" />
+                    <Card.Img variant="top" className="emg2" src="j3.png" />
                   </Card>
                 </SwiperSlide>
 
                 <SwiperSlide className="carde2">
                   <Card className="inner2" style={{ width: "12rem" }}>
-                    <Card.Img variant="top" className="emg2" src="4.png" />
+                    <Card.Img variant="top" className="emg2" src="j4.png" />
                   </Card>
                 </SwiperSlide>
 
                 <SwiperSlide className="carde2">
                   <Card className="inner2" style={{ width: "12rem" }}>
-                    <Card.Img variant="top" className="emg2" src="1.png" />
+                    <Card.Img variant="top" className="emg2" src="j1.png" />
                   </Card>
                 </SwiperSlide>
 
                 <SwiperSlide className="carde2">
                   <Card className="inner2" style={{ width: "12rem" }}>
-                    <Card.Img variant="top" className="emg2" src="2.png" />
+                    <Card.Img variant="top" className="emg2" src="j2.png" />
                   </Card>
                 </SwiperSlide>
 
                 <SwiperSlide className="carde2">
                   <Card className="inner2" style={{ width: "12rem" }}>
-                    <Card.Img variant="top" className="emg2" src="3.png" />
+                    <Card.Img variant="top" className="emg2" src="j3.png" />
                   </Card>
                 </SwiperSlide>
 
                 <SwiperSlide className="carde2">
                   <Card className="inner2" style={{ width: "12rem" }}>
-                    <Card.Img variant="top" className="emg2" src="4.png" />
+                    <Card.Img variant="top" className="emg2" src="j4.png" />
                   </Card>
                 </SwiperSlide>
               </Swiper>

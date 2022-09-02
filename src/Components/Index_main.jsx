@@ -16,7 +16,7 @@ function Index_main() {
       <About />
       <Explore />
       <How_to_play />
-      <Tokenomics />
+      {/* <Tokenomics /> */}
       {/* <Footer /> */}
     </div>
   );

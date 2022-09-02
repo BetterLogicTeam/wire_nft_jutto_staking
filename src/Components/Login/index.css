@@ -1,0 +1,39 @@
+.modal {
+  background: wheat !important;
+}
+.modalHeader {
+  padding: 0px 10px !important;
+  position: relative !important;
+}
+.btnClose {
+  position: absolute !important;
+  top: 0px !important;
+  right: 7% !important;
+}
+.footerTopBorder {
+  border-top: none !important;
+}
+.MuiTypography-h6 {
+  font-size: 20px !important;
+}
+.MuiDialogContent-root {
+  padding-top: 0px !important;
+}
+.MuiInputBase-input {
+  /* border: 1px solid black !important;
+  padding: 5px !important;
+  min-height: 25px !important;
+  padding-left: 5px !important; */
+}
+.MuiTypography-body1 {
+  font-size: 16px !important;
+}
+.MuiDialog-paper {
+  padding: 30px 20px !important;
+}
+.loginbtn {
+  cursor: pointer !important;
+}
+.displayNone {
+  height: 70px;
+}

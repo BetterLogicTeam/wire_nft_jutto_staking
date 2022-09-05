@@ -85,6 +85,9 @@ const Navbar = () => {
             })
         }
     }, [])
+    const reload = () => {
+        window.location.reload()
+    }
     return (
         <div className='row justify-content-center'>
             <div className='col-md-11'>
@@ -98,7 +101,7 @@ const Navbar = () => {
                     <div class="collapse navbar-collapse row px-5 py-1" id="navbarNavDropdown">
                         <ul class="navbar-nav">
                             <li class="nav-item active">
-                            <Link to={'/Dashboard/Home'} className="text-decoration-none text-white"><BiHomeCircle className="me-1 mb-1 " /> Dashboard</Link> 
+                                <Link to={'/Dashboard/Home'} className="text-decoration-none text-white"><BiHomeCircle className="me-1 mb-1 " /> Dashboard</Link>
                             </li>
                             <li>
                                 <div>
@@ -158,9 +161,7 @@ const Navbar = () => {
                                 </div>
                             </li>
                             <li>
-                                <button className='btn1 ' onClick={()=>{
-                                    navigate('/')
-                                }}><FaLock className="me-1 mb-1 " /> Logout</button>
+                                <button className='btn1 ' onClick={() => (navigate('/Login_main'), reload())}><FaLock className="me-1 mb-1 " /> Logout</button>
                             </li>
                         </ul>
                     </div>
@@ -224,7 +225,7 @@ const Navbar = () => {
                                 </div>
                             </li>
                             <li class="col-xl-10 col-12 border_bottom">
-                                <button className='btn1 col-12 text-start fs-6 py-2' onClick={()=>{
+                                <button className='btn1 col-12 text-start fs-6 py-2' onClick={() => {
                                     navigate('/')
                                 }}><FaLock className="me-1 mb-1" /> Logout</button>
                             </li>

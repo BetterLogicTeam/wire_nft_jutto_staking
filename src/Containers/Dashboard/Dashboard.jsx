@@ -46,7 +46,8 @@ const Dashboard = () => {
 
   const dashboard = useSelector((state) => state?.dashboard);
   // const user = localStorage.getItem("user");
-  const user = 778899;
+  let user = localStorage.getItem('user_Id')
+
 
 
   const dispatch = useDispatch();

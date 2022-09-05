@@ -1,6 +1,6 @@
 import moment from "moment";
 import { useEffect, useState } from "react";
-import {PagePath,Table, Table_Buttons} from "../../Components";
+import { PagePath, Table, Table_Buttons } from "../../Components";
 import { API } from '../../Redux/actions/API'
 
 
@@ -16,8 +16,10 @@ const Roi_Income = () => {
             const user = localStorage?.getItem("user");
             // let ress = JSON?.parse(user);
             // let uId = ress?.uid;
+            let user_id = localStorage.getItem('user_Id')
+            console.log('what is inside local storage', user_id)
 
-            let responce = await API?.get(`/roiIncome?id=${104083}`)
+            let responce = await API?.get(`/roiIncome?id=${user_id}`)
             responce = responce?.data?.data;
 
             console.log("Res", responce);
@@ -26,13 +28,13 @@ const Roi_Income = () => {
 
                 arr?.push({
                     sr: index + 1,
-                    id: `${item?.uid } `,
+                    id: `${item?.uid} `,
                     token: `${item?.package} `,
                     income_usd: `${item?.plan_amount} $`,
                     // date:moment(item?.edate).format("M/D/YYYY h:m:s A")
-                    date:item?.edate
+                    date: item?.edate
 
-                    
+
                 });
 
 
@@ -44,7 +46,7 @@ const Roi_Income = () => {
 
             setreferralApi(arr)
 
-console.log('what data from roi',referralApi)
+            console.log('what data from roi', referralApi)
 
 
 
@@ -58,37 +60,38 @@ console.log('what data from roi',referralApi)
         referral_API()
     }, [])
 
-    const indexOfLastPost=currentPage*listPerpage;
-    const indexOfFirstPage=indexOfLastPost-listPerpage;
-    const currentPost=referralApi.slice(indexOfFirstPage,indexOfLastPost)
+    const indexOfLastPost = currentPage * listPerpage;
+    const indexOfFirstPage = indexOfLastPost - listPerpage;
+    const currentPost = referralApi.slice(indexOfFirstPage, indexOfLastPost)
 
 
-    var [roi_income,set_roi_income]= new useState({
-        cols:[
-                {Header:'S.No',accessor:'sr'},
-                {Header:'ID',accessor:'id'},
-                {Header:'Package(USD)',accessor:'token'},
-                {Header:'Income(USD)',accessor:'income_usd'}, 
-                {Header:'Date',accessor:'date'}],
-        rows:[
-                {sr:'1',id:'101495',token:'338.846169456626',income_usd:'12345 $',date:'20/07/2022'},
-                {sr:'2',id:'101495',token:'338.846169456626',income_usd:'12345 $',date:'20/07/2022'},
-                {sr:'3',id:'101495',token:'338.846169456626',income_usd:'12345 $',date:'20/07/2022'},
-                {sr:'4',id:'101495',token:'338.846169456626',income_usd:'12345 $',date:'20/07/2022'},
-        ]});
-    return ( 
+    var [roi_income, set_roi_income] = new useState({
+        cols: [
+            { Header: 'S.No', accessor: 'sr' },
+            { Header: 'ID', accessor: 'id' },
+            { Header: 'Package(USD)', accessor: 'token' },
+            { Header: 'Income(USD)', accessor: 'income_usd' },
+            { Header: 'Date', accessor: 'date' }],
+        rows: [
+            { sr: '1', id: '101495', token: '338.846169456626', income_usd: '12345 $', date: '20/07/2022' },
+            { sr: '2', id: '101495', token: '338.846169456626', income_usd: '12345 $', date: '20/07/2022' },
+            { sr: '3', id: '101495', token: '338.846169456626', income_usd: '12345 $', date: '20/07/2022' },
+            { sr: '4', id: '101495', token: '338.846169456626', income_usd: '12345 $', date: '20/07/2022' },
+        ]
+    });
+    return (
         <div className="row justify-content-center">
             <div className="col-md-11 py-3">
-                <PagePath data={{page_name:"ROI Income",page_path:"All Income / ROI Income"}} />
+                <PagePath data={{ page_name: "ROI Income", page_path: "All Income / ROI Income" }} />
                 <Table
                     data={[...currentPost]}
                     columns={roi_income.cols}
                 />
-                <Table_Buttons indexOfFirstPage={indexOfFirstPage} indexOfLastPost={indexOfLastPost}  setcurrentPage={setcurrentPage} currentPage={currentPage} totalData={referralApi.length} listPerpage={listPerpage} />
+                <Table_Buttons indexOfFirstPage={indexOfFirstPage} indexOfLastPost={indexOfLastPost} setcurrentPage={setcurrentPage} currentPage={currentPage} totalData={referralApi.length} listPerpage={listPerpage} />
 
             </div>
         </div>
-     );
+    );
 }
- 
+
 export default Roi_Income;

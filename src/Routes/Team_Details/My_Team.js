@@ -21,9 +21,10 @@ const My_Team = () => {
 
             // let ress = JSON.parse(user);
             // let uId = ress?.uid;
+            let user_id = localStorage.getItem('user_Id')
 
             let responce = await API?.post(`downlineDetails`, {
-                id: 778899,
+                id: user_id,
                 position: 1,
                 SearchTerm: "",
                 status: 2
@@ -68,9 +69,10 @@ const My_Team = () => {
 
             // let ress = JSON.parse(user);
             // let uId = ress?.uid;
+            let user_id = localStorage.getItem('user_Id')
 
             let responce = await API?.post(`downlineDetails`, {
-                id: 778899,
+                id: user_id,
                 position: 2,
                 SearchTerm: "",
 

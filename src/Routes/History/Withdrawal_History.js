@@ -19,9 +19,10 @@ const Withdrawal_History = () => {
 
             // let ress = JSON.parse(user);
             // let uId = ress?.uid;
+            let user_id = localStorage.getItem('user_Id')
 
 
-            let responce = await API?.get(`withdrawalHistory?id=${778899}`)
+            let responce = await API?.get(`withdrawalHistory?id=${user_id}`)
             let dataaa = responce?.data.data;
             console.log("responce", dataaa);
 

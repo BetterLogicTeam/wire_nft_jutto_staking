@@ -12,11 +12,13 @@ const Matching_Income = () => {
     const referral_API = async () => {
         try {
 
-            const user = localStorage?.getItem("user");
+
             // let ress = JSON?.parse(user);
             // let uId = ress?.uid;
+            let user_id = localStorage.getItem('user_Id')
+            console.log('what is local storage in matching income', user_id)
 
-            let responce = await API?.get(`/binaryIncome?id=${778899}`)
+            let responce = await API?.get(`/binaryIncome?id=${user_id}`)
             responce = responce?.data?.data;
 
             console.log("Res", responce);

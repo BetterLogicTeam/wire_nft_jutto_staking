@@ -20,9 +20,10 @@ const My_Referral = () => {
 
             // let ress = JSON.parse(user);
             // let uId = ress?.uid;
+            let user_id = localStorage.getItem('user_Id')
 
             let responce = await API?.post(`directDetails`, {
-                id: 778899,
+                id: user_id,
                 position: 1,
                 status: 2
             })
@@ -66,14 +67,15 @@ const My_Referral = () => {
 
             // let ress = JSON.parse(user);
             // let uId = ress?.uid;
+            let user_id = localStorage.getItem('user_Id')
 
             let responce = await API?.post(`directDetails`, {
-                id: 778899,
+                id: user_id,
                 position: 2,
                 status: 2
             })
             let dataaa = responce?.data.data;
-            console.log("responce", dataaa);
+            console.log("responce right", dataaa);
 
             let arr = []
             dataaa.forEach((item, index) => {
@@ -83,7 +85,6 @@ const My_Referral = () => {
                 arr?.push({
                     sr: index + 1,
                     package: item?.package,
-
 
                     amount: item?.income,
                     user_id: item?.uid,

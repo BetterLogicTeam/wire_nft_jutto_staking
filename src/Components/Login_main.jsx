@@ -3,9 +3,11 @@ import { loadWeb3 } from "../api.js";
 import { FaTelegram } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import './Login_main.css'
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function Login_main({notify}) {
+  const navigate = useNavigate();
     const [uid,setuid] = useState();    
     const [address,setaddress] = useState('');
     const [connected,setconnected] = useState('MetaMask is not connected..!..Wait...')
@@ -17,6 +19,7 @@ function Login_main({notify}) {
         {
          console.log(res.data)
          notify('Login Successfully')
+         navigate('/Dashboard/Home')
         }
      }
 

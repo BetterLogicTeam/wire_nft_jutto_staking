@@ -27,6 +27,16 @@ const callapi = async (position) => {
     notify('Registered Successfully')
    }
 }
+const callLoginApi = async () => {
+    let res =  await axios.get('https://ulematic-api.herokuapp.com/login?id='+uid);
+    console.log(res)
+    if(res.data.success == true)
+    {
+     console.log(res.data)
+     notify('Login Successfully')
+     navigate('/Dashboard/Home')
+    }
+ }
 const  ConnectToMetaMask = async ()=>{
     let acc = await loadWeb3();
     if(acc == 'No Wallet')
@@ -38,7 +48,6 @@ const  ConnectToMetaMask = async ()=>{
       notify('Wrong Network')
     }
     else{
-      notify("Wallet Connected");
       setaddress(acc)
       setconnected('MetaMask is connected... Ready To Register')
     }
@@ -122,8 +131,12 @@ const  ConnectToMetaMask = async ()=>{
 
                                 </div>
                             </div>
-                            <div className="btn log_batan">Please enter ID or Metamask address</div>
-                            <div className="btn log_batan">Connect to Wallet</div>
+                            <input className="btn log_batan" placeholder='Please enter ID or Metamask address' onChange={(e)=>{
+                                        setuid(e.target.value)
+                                    }}  />
+                            <div className="btn log_batan" onClick={()=>{
+                                callLoginApi()
+                            }}>Connect to Wallet</div>
                         </div>
                     </div>
                     </div>
@@ -147,7 +160,7 @@ const  ConnectToMetaMask = async ()=>{
                             {/* <div className="btn log_batan">Please enter ID or Metamask address</div> */}
                           <Link to="/">  <div className="btn log_batan hom">Go To Home</div></Link>
 
-                        <p className='peera2 pt-3'>Please Install MetaMask!</p>
+                        { connected == 'MetaMask is not connected..!..Wait...' ? <p className='peera2 pt-3'>Please Install MetaMask!</p> : <></>}
 
                         </div>
                     </div>

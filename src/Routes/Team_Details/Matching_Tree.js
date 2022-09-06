@@ -337,45 +337,45 @@ const Matching_Tree = () => {
     useEffect(() => {
         referral_API()
     }, [Idnumer])
-    React.useEffect(() => {
-        return (() => {
-            let team_info_div = document.querySelector('.team-info');
-            let team_info_div_data = document.querySelectorAll('.team-info p')
-            let user_img = document.querySelectorAll('.user-img');
-            for (let x = 0; x < 15; x++) {
-                user_img[x].addEventListener('mouseover', () => {
-                    team_info_div_data[0].innerHTML += userdata[x].registration_date;
-                    team_info_div_data[1].innerHTML += userdata[x].status;
-                    team_info_div_data[2].innerHTML += userdata[x].total_left;
-                    team_info_div_data[3].innerHTML += userdata[x].total_left_active;
-                    team_info_div_data[4].innerHTML += userdata[x].left_business;
-                    team_info_div_data[5].innerHTML += userdata[x].package_amount;
-                    team_info_div_data[6].innerHTML += userdata[x].topup_date;
-                    team_info_div_data[7].innerHTML += userdata[x].package;
-                    team_info_div_data[8].innerHTML += userdata[x].total_right;
-                    team_info_div_data[9].innerHTML += userdata[x].total_right_active;
-                    team_info_div_data[10].innerHTML += userdata[x].right_business;
+    // React.useEffect(() => {
+    //     return (() => {
+    //         let team_info_div = document.querySelector('.team-info');
+    //         let team_info_div_data = document.querySelectorAll('.team-info p')
+    //         let user_img = document.querySelectorAll('.user-img');
+    //         for (let x = 0; x < 15; x++) {
+    //             user_img[x].addEventListener('mouseover', () => {
+    //                 team_info_div_data[0].innerHTML += userdata[x].registration_date;
+    //                 team_info_div_data[1].innerHTML += userdata[x].status;
+    //                 team_info_div_data[2].innerHTML += userdata[x].total_left;
+    //                 team_info_div_data[3].innerHTML += userdata[x].total_left_active;
+    //                 team_info_div_data[4].innerHTML += userdata[x].left_business;
+    //                 team_info_div_data[5].innerHTML += userdata[x].package_amount;
+    //                 team_info_div_data[6].innerHTML += userdata[x].topup_date;
+    //                 team_info_div_data[7].innerHTML += userdata[x].package;
+    //                 team_info_div_data[8].innerHTML += userdata[x].total_right;
+    //                 team_info_div_data[9].innerHTML += userdata[x].total_right_active;
+    //                 team_info_div_data[10].innerHTML += userdata[x].right_business;
 
-                    team_info_div.classList.remove('d-none');
-                    team_info_div.setAttribute('style', `top:${user_img[x].getBoundingClientRect().top + 50}px; left:${user_img[x].getBoundingClientRect().left + 50};`);
-                })
-                user_img[x].addEventListener('mouseout', () => {
-                    team_info_div_data[0].innerHTML = 'Registration Date :';
-                    team_info_div_data[1].innerHTML = 'Status :';
-                    team_info_div_data[2].innerHTML = 'Total Left :';
-                    team_info_div_data[3].innerHTML = 'Total Left Active :';
-                    team_info_div_data[4].innerHTML = 'Left Business :';
-                    team_info_div_data[5].innerHTML = 'Packgae Amount :';
-                    team_info_div_data[6].innerHTML = 'Topup Date: ';
-                    team_info_div_data[7].innerHTML = 'Packgae : ';
-                    team_info_div_data[8].innerHTML = 'Total Right : ';
-                    team_info_div_data[9].innerHTML = 'Total Right Active : ';
-                    team_info_div_data[10].innerHTML = 'Right Business : ';
-                    team_info_div.classList.add('d-none');
-                })
-            }
-        })
-    }, [])
+    //                 team_info_div.classList.remove('d-none');
+    //                 team_info_div.setAttribute('style', `top:${user_img[x].getBoundingClientRect().top + 50}px; left:${user_img[x].getBoundingClientRect().left + 50};`);
+    //             })
+    //             user_img[x].addEventListener('mouseout', () => {
+    //                 team_info_div_data[0].innerHTML = 'Registration Date :';
+    //                 team_info_div_data[1].innerHTML = 'Status :';
+    //                 team_info_div_data[2].innerHTML = 'Total Left :';
+    //                 team_info_div_data[3].innerHTML = 'Total Left Active :';
+    //                 team_info_div_data[4].innerHTML = 'Left Business :';
+    //                 team_info_div_data[5].innerHTML = 'Packgae Amount :';
+    //                 team_info_div_data[6].innerHTML = 'Topup Date: ';
+    //                 team_info_div_data[7].innerHTML = 'Packgae : ';
+    //                 team_info_div_data[8].innerHTML = 'Total Right : ';
+    //                 team_info_div_data[9].innerHTML = 'Total Right Active : ';
+    //                 team_info_div_data[10].innerHTML = 'Right Business : ';
+    //                 team_info_div.classList.add('d-none');
+    //             })
+    //         }
+    //     })
+    // }, [])
 
     return (
         <div className="row justify-content-center">

@@ -9,6 +9,28 @@ import { FaLock } from 'react-icons/fa'
 import { Link } from 'react-router-dom';
 const Navbar = () => {
     const navigate = useNavigate()
+    const onClickHide = ()=>{
+        let expand_list = document.querySelectorAll('.expand-nav');
+        for (let y = 0; y < 5; y++) {
+            expand_list[y].classList.forEach((class_item) => {
+                if (class_item == 'd-flex') {
+                    expand_list[y].classList.remove('d-flex');
+                    expand_list[y].classList.add('d-none');
+                }
+            })
+        }
+    }
+    const onClickHideSM = ()=>{
+        let expand_list = document.querySelectorAll('.expand-nav-sm');
+        for (let y = 0; y < 5; y++) {
+            expand_list[y].classList.forEach((class_item) => {
+                if (class_item == 'd-flex') {
+                    expand_list[y].classList.remove('d-flex');
+                    expand_list[y].classList.add('d-none');
+                }
+            })
+        }
+    }
     React.useEffect(() => {
         let nav_btn_expand = document.querySelectorAll('.nav-btn-expand');
         let nav_btn = document.querySelector('.nav-btn');
@@ -101,15 +123,15 @@ const Navbar = () => {
                     <div class="collapse navbar-collapse row px-5 py-1" id="navbarNavDropdown">
                         <ul class="navbar-nav">
                             <li class="nav-item active">
-                                <Link to={'/Dashboard/Home'} className="text-decoration-none text-white"><BiHomeCircle className="me-1 mb-1 " /> Dashboard</Link>
+                                <Link onClick={()=>{onClickHide()}} to={'/Dashboard/Home'} className="text-decoration-none text-white"><BiHomeCircle className="me-1 mb-1 " /> Dashboard</Link>
                             </li>
                             <li>
                                 <div>
                                     <button className='btn1 nav-btn-expand '><TbAtom className="me-1 mb-1 " /> Activation</button>
                                     <div className='expand-nav  d-none flex-column'>
-                                        <Link to="/Dashboard/Activate_History"><BsArrowRightShort /> Activate History</Link>
-                                        <Link to="/Dashboard/Staking_Details"><BsArrowRightShort /> Staking Details</Link>
-                                        <Link to="/Dashboard/Profile"><BsArrowRightShort /> Profile</Link>
+                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Activate_History"><BsArrowRightShort /> Activate History</Link>
+                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Staking_Details"><BsArrowRightShort /> Staking Details</Link>
+                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Profile"><BsArrowRightShort /> Profile</Link>
                                     </div>
                                 </div>
                             </li>
@@ -118,12 +140,12 @@ const Navbar = () => {
                                     <button className='btn1 nav-btn-expand '> <BiLineChart className="me-1 mb-1 " /> All Income</button>
                                     <div className='expand-nav  d-none flex-column'>
                                         {/* <Link to="/Dashboard/Referral_Income"><BsArrowRightShort /> Referral Income</Link> */}
-                                        <Link to="/Dashboard/Registration_Direct_Income"><BsArrowRightShort /> Registration Direct Income</Link>
-                                        <Link to="/Dashboard/Activation_Direct_Income"><BsArrowRightShort /> Activation Direct Income</Link>
+                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Registration_Direct_Income"><BsArrowRightShort /> Registration Direct Income</Link>
+                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Activation_Direct_Income"><BsArrowRightShort /> Activation Direct Income</Link>
 
-                                        <Link to="/Dashboard/Matching_Income"><BsArrowRightShort /> Matching Income</Link>
+                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Matching_Income"><BsArrowRightShort /> Matching Income</Link>
                                         {/* <Link to="/Dashboard/Matching_Level_Income"><BsArrowRightShort /> Matching Level Income</Link> */}
-                                        <Link to="/Dashboard/Roi_Income"><BsArrowRightShort /> Roi Income</Link>
+                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Roi_Income"><BsArrowRightShort /> Roi Income</Link>
                                         {/* <Link to="/Dashboard/Reward_Income"><BsArrowRightShort /> Reward Income</Link> */}
                                     </div>
                                 </div>
@@ -132,9 +154,9 @@ const Navbar = () => {
                                 <div>
                                     <button className='btn1 nav-btn-expand '><BiBook className="me-1 mb-1 " /> History</button>
                                     <div className='expand-nav  d-none flex-column'>
-                                        <Link to="/Dashboard/Buy_NFT"><BsArrowRightShort /> Buy NFT</Link>
-                                        <Link to="/Dashboard/Withdrawal"><BsArrowRightShort /> Withdrawal</Link>
-                                        <Link to="/Dashboard/Withdrawal_History"><BsArrowRightShort /> Withdrawal History</Link>
+                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Buy_NFT"><BsArrowRightShort /> Buy NFT</Link>
+                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Withdrawal"><BsArrowRightShort /> Withdrawal</Link>
+                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Withdrawal_History"><BsArrowRightShort /> Withdrawal History</Link>
                                     </div>
                                 </div>
                             </li>
@@ -142,11 +164,11 @@ const Navbar = () => {
                                 <div>
                                     <button className='btn1 nav-btn-expand '><MdOutlineGroup className="me-1 mb-1 " /> Team Details</button>
                                     <div className='expand-nav  d-none flex-column'>
-                                        <Link to="/Dashboard/My_Referral"><BsArrowRightShort /> My Referal</Link>
-                                        <Link to="/Dashboard/My_Team"><BsArrowRightShort /> My Team</Link>
-                                        <Link to="/Dashboard/Matching_Tree"><BsArrowRightShort /> Matching Tree</Link>
-                                        <Link to="/Dashboard/Level_Details"><BsArrowRightShort /> Level Details</Link>
-                                        <Link to="/Dashboard/Direct_Leg_Business"><BsArrowRightShort /> Direct Leg Business</Link>
+                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/My_Referral"><BsArrowRightShort /> My Referal</Link>
+                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/My_Team"><BsArrowRightShort /> My Team</Link>
+                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Matching_Tree"><BsArrowRightShort /> Matching Tree</Link>
+                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Level_Details"><BsArrowRightShort /> Level Details</Link>
+                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Direct_Leg_Business"><BsArrowRightShort /> Direct Leg Business</Link>
                                     </div>
                                 </div>
                             </li>
@@ -154,9 +176,9 @@ const Navbar = () => {
                                 <div>
                                     <button className='btn1 nav-btn-expand'><BiMessageSquareEdit className="me-1 mb-1 " /> Address</button>
                                     <div className='expand-nav  d-none flex-column'>
-                                        <Link to="/Dashboard/Self_Address"><BsArrowRightShort /> Self Address</Link>
-                                        <Link to="/Dashboard/Coin_Address"><BsArrowRightShort /> Coin Address</Link>
-                                        <Link to="/Dashboard/NFT_Address"><BsArrowRightShort /> NFT Address</Link>
+                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Self_Address"><BsArrowRightShort /> Self Address</Link>
+                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Coin_Address"><BsArrowRightShort /> Coin Address</Link>
+                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/NFT_Address"><BsArrowRightShort /> NFT Address</Link>
                                     </div>
                                 </div>
                             </li>
@@ -168,15 +190,15 @@ const Navbar = () => {
                     <div className='nav-panel d-none bg-black col-10'>
                         <ul class="row p-0 justify-content-center list-unstyled">
                             <li class="col-xl-10 col-12 border_bottom">
-                                <Link to={'/Dashboard/Home'} className="fs-6 py-2 text-decoration-none text-white"><BiHomeCircle className="me-1 mb-1" /> Dashboard</Link>
+                                <Link onClick={()=>{onClickHideSM()}} to={'/Dashboard/Home'} className="fs-6 py-2 text-decoration-none text-white"><BiHomeCircle className="me-1 mb-1" /> Dashboard</Link>
                             </li>
                             <li class="col-xl-10 col-12 border_bottom">
                                 <div>
                                     <button className='btn1 nav-btn-expand col-12 text-start fs-6 py-2'><TbAtom className="me-1 mb-1" /> Activation</button>
                                     <div className='expand-nav-sm  d-none flex-column'>
-                                        <Link to="/Dashboard/Activate_History"><BsArrowRightShort /> Activate History</Link>
-                                        <Link to="/Dashboard/Staking_Details"><BsArrowRightShort /> Staking Details</Link>
-                                        <Link to="/Dashboard/Profile"><BsArrowRightShort /> Profile</Link>
+                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Activate_History"><BsArrowRightShort /> Activate History</Link>
+                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Staking_Details"><BsArrowRightShort /> Staking Details</Link>
+                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Profile"><BsArrowRightShort /> Profile</Link>
                                     </div>
                                 </div>
                             </li>
@@ -184,11 +206,11 @@ const Navbar = () => {
                                 <div>
                                     <button className='btn1 nav-btn-expand col-12 text-start fs-6 py-2'> <BiLineChart className="me-1 mb-1" /> All Income</button>
                                     <div className='expand-nav-sm  d-none flex-column'>
-                                        <Link to="/Dashboard/Referral_Income"><BsArrowRightShort /> Referral Income</Link>
-                                        <Link to="/Dashboard/Matching_Level_Income"><BsArrowRightShort /> Matching Level Income</Link>
-                                        <Link to="/Dashboard/Matching_Income"><BsArrowRightShort /> Matching Income</Link>
-                                        <Link to="/Dashboard/Roi_Income"><BsArrowRightShort /> Roi Income</Link>
-                                        <Link to="/Dashboard/Reward_Income"><BsArrowRightShort /> Reward Income</Link>
+                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Referral_Income"><BsArrowRightShort /> Referral Income</Link>
+                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Matching_Level_Income"><BsArrowRightShort /> Matching Level Income</Link>
+                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Matching_Income"><BsArrowRightShort /> Matching Income</Link>
+                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Roi_Income"><BsArrowRightShort /> Roi Income</Link>
+                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Reward_Income"><BsArrowRightShort /> Reward Income</Link>
                                     </div>
                                 </div>
                             </li>
@@ -196,9 +218,9 @@ const Navbar = () => {
                                 <div>
                                     <button className='btn1 nav-btn-expand col-12 text-start fs-6 py-2'><BiBook className="me-1 mb-1" /> History</button>
                                     <div className='expand-nav-sm  d-none flex-column'>
-                                        <Link to="/Dashboard/Buy_NFT"><BsArrowRightShort /> Buy NFT</Link>
-                                        <Link to="/Dashboard/Withdrawal"><BsArrowRightShort /> Withdrawal</Link>
-                                        <Link to="/Dashboard/Withdrawal_History"><BsArrowRightShort /> Withdrawal History</Link>
+                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Buy_NFT"><BsArrowRightShort /> Buy NFT</Link>
+                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Withdrawal"><BsArrowRightShort /> Withdrawal</Link>
+                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Withdrawal_History"><BsArrowRightShort /> Withdrawal History</Link>
                                     </div>
                                 </div>
                             </li>
@@ -206,11 +228,11 @@ const Navbar = () => {
                                 <div>
                                     <button className='btn1 nav-btn-expand col-12 text-start fs-6 py-2'><MdOutlineGroup className="me-1 mb-1" /> Team Details</button>
                                     <div className='expand-nav-sm  d-none flex-column'>
-                                        <Link to="/Dashboard/My_Referal"><BsArrowRightShort /> My Referal</Link>
-                                        <Link to="/Dashboard/Matching_Income"><BsArrowRightShort /> My Team</Link>
-                                        <Link to="/Dashboard/Matching_Tree"><BsArrowRightShort /> Matching Tree</Link>
-                                        <Link to="/Dashboard/Level_Details"><BsArrowRightShort /> Level Details</Link>
-                                        <Link to="/Dashboard/Direct_Leg_Business"><BsArrowRightShort /> Direct Leg Business</Link>
+                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/My_Referal"><BsArrowRightShort /> My Referal</Link>
+                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Matching_Income"><BsArrowRightShort /> My Team</Link>
+                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Matching_Tree"><BsArrowRightShort /> Matching Tree</Link>
+                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Level_Details"><BsArrowRightShort /> Level Details</Link>
+                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Direct_Leg_Business"><BsArrowRightShort /> Direct Leg Business</Link>
                                     </div>
                                 </div>
                             </li>
@@ -218,9 +240,9 @@ const Navbar = () => {
                                 <div>
                                     <button className='btn1 nav-btn-expand col-12 text-start fs-6 py-2'><BiMessageSquareEdit className="me-1 mb-1" /> Address</button>
                                     <div className='expand-nav-sm  d-none flex-column'>
-                                        <Link to="/Dashboard/Self_Address"><BsArrowRightShort /> Self Address</Link>
-                                        <Link to="/Dashboard/Coin_Address"><BsArrowRightShort /> Coin Address</Link>
-                                        <Link to="/Dashboard/NFT_Address"><BsArrowRightShort /> NFT Address</Link>
+                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Self_Address"><BsArrowRightShort /> Self Address</Link>
+                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Coin_Address"><BsArrowRightShort /> Coin Address</Link>
+                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/NFT_Address"><BsArrowRightShort /> NFT Address</Link>
                                     </div>
                                 </div>
                             </li>

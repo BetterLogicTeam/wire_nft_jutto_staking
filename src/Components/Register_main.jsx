@@ -6,8 +6,12 @@ import { useState } from 'react';
 import { loadWeb3 } from "../api.js";
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { tokenAddress,tokenAbi} from '../Utils/token'
+import {contractAddress,contractAbi} from '../Utils/contract'
 function Register_main({ notify }) {
     const navigate = useNavigate();
+    const [matic,setmatic] = useState(0)
+    const [ule,setule] = useState(0)
     const [uid, setuid] = useState("");
     const [address, setaddress] = useState('');
     const [connected, setconnected] = useState('MetaMask is not connected..!..Wait...')
@@ -52,9 +56,48 @@ function Register_main({ notify }) {
             setconnected('MetaMask is connected... Ready To Register')
         }
     }
+    const cotractCall = async ()=>{
+        let acc = await loadWeb3();
+        if (acc == 'No Wallet') {
+            notify('No Wallet')
+        }
+        else if (acc == 'Wrong Network') {
+            notify('Wrong Network')
+        }
+        else {
+            setaddress(acc)
+            setconnected('MetaMask is connected... Ready To Register')
+            try{
+                let contract = await new window.web3.eth.Contract(contractAbi,contractAddress)
+                let token = await new window.web3.eth.Contract(tokenAbi,tokenAddress)
+                let approveCall = await token.methods.approve(contractAddress,ule).send({from:acc});
+                notify('Approved')
+                let sellCall =  await contract.methods.sell(ule).send({from:acc,value:matic});
+                notify('Transection Succesfull')
+            }
+            catch(err)
+            {
+                console.log(err)
+            }
+            
+        }
+    }
+    const callMaticUrliApi = async ()=>{
+        let res = await axios.get(`https://ulematic.herokuapp.com/live_rate_matic`);
+        setmatic((Number(res.data.data[0].usdperunit)*10))
+
+    }
+    const callUleApi = async ()=>{
+        let res = await axios.get(`https://ulematic.herokuapp.com/live_rate`);
+        setule((Number(res.data.data[0].usdperunit)*10))
+        console.log(Number(res.data.data[0].usdperunit)*10)
+
+    }
 
     useEffect(() => {
         ConnectToMetaMask();
+        callUleApi();
+        callMaticUrliApi();
     }, [])
 
     return (
@@ -100,16 +143,17 @@ function Register_main({ notify }) {
                                             <h4 className=' text-dark fs-5 my-3'>Referral Confirmation</h4>
                                             <p>Your Current Referral ID is {uid}</p>
                                             <div className=' d-flex flex-row align-items-center justify-content-center my-2'>
-                                                <p className=' p-0  m-0'>Tron</p> <input className='input1 mx-2' defaultValue={0} type={'number'} />
-                                                <p className=' p-0  m-0'>ULE</p> <input className='input1 mx-2' defaultValue={0} type={'number'} />
+                                                <p className=' p-0  m-0'>Matic</p> <input className='input1 mx-2' defaultValue={matic} value={matic} disabled  type={'number'} />
+                                                <p className=' p-0  m-0'>ULE</p> <input className='input1 mx-2' defaultValue={ule} value={ule} disabled type={'number'} />
                                             </div>
                                             <select className="boxset" name='position'>
                                                 <option value={1}>Left</option>
                                                 <option value={2}>Right</option>
                                             </select>
                                             <div className=' mt-4'>
-                                                <button className="btn bt loginbtn px-3 mx-2" onClick={() => {
+                                                <button className="btn bt loginbtn px-3 mx-2" onClick={ async () => {
                                                     let position = document.getElementsByName('position')[0].value;
+                                                    await cotractCall()
                                                     callapi(position.value)
                                                     let modelRegister = document.querySelector('.modelRegister')
                                                     let modelRegisterR = document.querySelector('.bord')

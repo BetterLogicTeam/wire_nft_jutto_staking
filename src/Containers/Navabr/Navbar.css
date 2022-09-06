@@ -1,6 +1,6 @@
 .expand-nav {
     background-color: #370659;
-    ;
+    z-index:999 ;
     color: white;
     position: absolute;
     padding-top: 1rem;

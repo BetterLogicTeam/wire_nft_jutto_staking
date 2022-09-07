@@ -17,14 +17,18 @@
     background-color: white;
     color: black;
     padding: 20px;
-    height: 80vh;
+    /* height: 80vh; */
     text-align: center;
-    border: 2px solid rgb(251,197,11);
+    /* border: 2px solid rgb(251,197,11); */
     margin-left: -24px;
 }
 
-.main_form:hover{
-    box-shadow: 0px 0px 53px 15px rgb(235 194 31);
+/* .main_form:hover{
+    box-shadow: 0px 0px 53px 15px white(235 194 31);
+} */
+
+.mainForm:hover{
+    box-shadow: 0px 0px 53px 15px rgba(0,0,0, 0.5);
 }
 
 .main_form2:hover{
@@ -84,10 +88,14 @@
 }
 
 .log_batan{
-    background-color: rgb(251,197,11);
+    background: linear-gradient(217deg, rgba(93,9,116,1) 0%, rgba(24,3,102,1) 53%, rgba(82,1,153,1) 100%, rgba(73,7,101,1) 1000%);;
     padding:10px 0px;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     margin-top: 10px;
+    color:white
+}
+.log_batan:hover{
+    background: white !important ;
 }
 
 .peera{
@@ -138,8 +146,12 @@
 }
 
 .loginbtn {
-    background: #f4cd44 !important;
-    color: #000 !important;
+    background: linear-gradient(217deg, rgba(93,9,116,1) 0%, rgba(24,3,102,1) 53%, rgba(82,1,153,1) 100%, rgba(73,7,101,1) 1000%);
+    color: white !important;
+}
+.loginbtn:hover{
+    color: black !important ;
+    background: white !important ;
 }
 
 .boxset{
@@ -148,6 +160,9 @@
     width: 86%;
     border: 1px solid #4f4d4d;
     border-radius: 4px;
+}
+.boxset::placeholder{
+    color:black
 }
 .bord{
     border: solid 2px #000;

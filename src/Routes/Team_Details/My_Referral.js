@@ -16,14 +16,14 @@ const My_Referral = () => {
     const referral_API = async () => {
         try {
 
-            // const user = localStorage?.getItem("user");
+            const user = localStorage?.getItem("user");
 
-            // let ress = JSON.parse(user);
-            // let uId = ress?.uid;
-            let user_id = localStorage.getItem('user_Id')
+            let ress = JSON.parse(user);
+            let uId = ress?.uid;
+            
 
             let responce = await API?.post(`directDetails`, {
-                id: user_id,
+                id: uId,
                 position: 1,
                 status: 2
             })
@@ -63,14 +63,14 @@ const My_Referral = () => {
     const referral_API_Right = async () => {
         try {
 
-            // const user = localStorage?.getItem("user");
+            const user = localStorage?.getItem("user");
 
-            // let ress = JSON.parse(user);
-            // let uId = ress?.uid;
-            let user_id = localStorage.getItem('user_Id')
+            let ress = JSON.parse(user);
+            let uId = ress?.uid;
+         
 
             let responce = await API?.post(`directDetails`, {
-                id: user_id,
+                id: uId,
                 position: 2,
                 status: 2
             })
@@ -85,7 +85,6 @@ const My_Referral = () => {
                 arr?.push({
                     sr: index + 1,
                     package: item?.package,
-
                     amount: item?.income,
                     user_id: item?.uid,
                     date: item?.edate,
@@ -125,7 +124,7 @@ const My_Referral = () => {
             { Header: 'User ID', accessor: 'user_id' },
             { Header: 'Packgae', accessor: 'package' },
             { Header: 'RegistrationDate', accessor: 'date' },
-            { Header: 'Remark', accessor: 'remark' },
+            // { Header: 'Remark', accessor: 'remark' },
             { Header: 'Activation Date Time', accessor: 'activation_date' },
             // { Header: 'Total Active Team', accessor: 'total_active_team' },
         ],
@@ -146,7 +145,7 @@ const My_Referral = () => {
     return (
         <div className="row justify-content-center">
             <PagePath data={{ page_name: "My Referral", page_path: "Team Details / My Referral" }} />
-            <div className="row my-4 align-items-end justify-content-center gy-4">
+            {/* <div className="row my-4 align-items-end justify-content-center gy-4">
                 <div className="col-md-4 col-lg-3 col-8">
                     <p className="p-color p-0 m-0">Select Date</p>
                     <input type="date" prototype="Select Level" className="input bg-color ps-4" />
@@ -156,7 +155,7 @@ const My_Referral = () => {
                     <input type="date" prototype="Select Level" className="input bg-color ps-4" />
                 </div>
                 <button className="bg-primary col-md-2 col-6 col-lg-1 btn text-white">Search</button>
-            </div>
+            </div> */}
             <div className="col-md-6 py-3 text-center">
 
 

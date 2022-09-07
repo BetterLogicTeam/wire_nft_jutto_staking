@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import './Login_main.css'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 var bol = false;
 function Login_main({ notify }) {
   const navigate = useNavigate();
@@ -13,21 +14,26 @@ function Login_main({ notify }) {
   const [connected, setconnected] = useState('MetaMask is not connected..!..Wait...')
 
   const callapi = async () => {
-    let res = await axios.get('https://ulematic-api.herokuapp.com/login?id=' + uid);
-    console.log(res)
-    if (res.data.success == true) {
-      console.log(res.data)
-      notify('Login Successfully')
-      localStorage.setItem("user_Id", uid);
+    let res = await axios.get(`https://ulematic-api.herokuapp.com/login?id=${uid}`);
+    console.log("logindata",res.data.data)
+    if (res.data.data !== 0) {
+     
+      toast.success('Login Successfully')
+      localStorage.setItem("isAuthenticated", true);
+      localStorage.setItem("user", JSON.stringify(res.data.data));
       navigate('/Dashboard/Home')
+    }else{
+      toast.error("Something went wrong ! ");
+
     }
+
   }
 
   const ConnectToMetaMask = async () => {
 
 
     let acc = await loadWeb3();
-    console.log('wjat is adress', acc)
+  
     if (acc == 'No Wallet') {
       notify('No Wallet')
     }
@@ -94,7 +100,7 @@ function Login_main({ notify }) {
                   {/* <div className="btn log_batan">Please enter ID or Metamask address</div> */}
                   <Link to="/">   <div className="btn log_batan hom">Go To Home</div></Link>
 
-                  <p className='peera2 pt-3'>Please Install MetaMask!</p>
+                  {/* <p className='peera2 pt-3'>Please Install MetaMask!</p>/ */}
 
                 </div>
               </div>

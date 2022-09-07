@@ -2,6 +2,12 @@ table{
     width: 100%;
     min-height: 50vh;
 }
+.TableOver{
+    overflow-x: scroll;
+}
+.TableOver::-webkit-scrollbar{
+    width: 0;
+}
 thead{
     background-color: rgba(0, 0, 0, .2);    
     color: rgb(255 255 255 / 80%);

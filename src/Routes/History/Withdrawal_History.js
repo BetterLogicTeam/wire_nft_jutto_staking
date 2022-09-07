@@ -15,14 +15,14 @@ const Withdrawal_History = () => {
     const referral_API = async () => {
         try {
 
-            // const user = localStorage?.getItem("user");
+            const user = localStorage?.getItem("user");
 
-            // let ress = JSON.parse(user);
-            // let uId = ress?.uid;
-            let user_id = localStorage.getItem('user_Id')
+            let ress = JSON.parse(user);
+            let uId = ress?.uid;
+         
 
 
-            let responce = await API?.get(`withdrawalHistory?id=${user_id}`)
+            let responce = await API?.get(`withdrawalHistory?id=${uId}`)
             let dataaa = responce?.data.data;
             console.log("responce", dataaa);
 
@@ -30,18 +30,13 @@ const Withdrawal_History = () => {
             let arr = []
             dataaa.forEach((item, index) => {
                 console.log("item", item);
-
-
-
                 arr?.push({
                     sr: index + 1,
-                    package: item?.package,
-
-
-                    investment: item?.selfbv,
+                    withdrawal_token: item?.withdrawal_token,
+                    txn: item?.txn,
                     user_id: item?.uid,
-                    date: item?.edate,
-                    team_business: item?.teambv
+                    paid_date: item?.paid_date,
+                  
 
                 });
 
@@ -86,7 +81,7 @@ const Withdrawal_History = () => {
             <div className="col-md-11 py-3">
                 <PagePath data={{ page_name: "Withdrawal History", page_path: "History / Withdrawal History" }} />
                 <Table
-                    data={withdrawal_history.rows}
+                    data={referralApi}
                     columns={withdrawal_history.cols}
                 />
                 <Table_Buttons data={{ first_value: '1', last_value: '10', current_value: '5' }} />

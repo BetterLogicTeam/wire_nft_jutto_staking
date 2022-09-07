@@ -8,7 +8,7 @@ const Table_Buttons = ({ setcurrentPage, currentPage, indexOfFirstPage, indexOfL
 
 
     return (
-        <div className="Table_Buttons d-flex flex-row align-items-center">
+        <div className="Table_Buttons d-flex flex-row align-items-center pb-5">
             <button className="tablebtn bg-white px-5 py-2"
                 onClick={() => {
                     setcurrentPage(1)

@@ -55,140 +55,13 @@ function App() {
           <Route exact path="/Login_main" element={<Login_main notify={notify} />} />
           <Route exact path="/Register_main" element={<Register_main notify={notify} />} />
           
-            <Route path='Dashboard/Home' element={  <> <Navbar />  <Home /> <div className='hidden-for-area'>
-            <Footer />
-          </div>
-          <div className='footer-visible'>
-            <Footer />
-          </div></>} /> 
-            <Route path='Dashboard/Activate_History' element={  <> <Navbar /> <Activate_History /><div className='hidden-for-area'>
-            <Footer />
-          </div>
-          <div className='footer-visible'>
-            <Footer />
-          </div></>} />          
-            <Route path='Dashboard/Staking_Details' element={  <> <Navbar /> <Staking_Details /><div className='hidden-for-area'>
-            <Footer />
-          </div>
-          <div className='footer-visible'>
-            <Footer />
-          </div></>} />                 
-            <Route path='Dashboard/Profile' element={  <> <Navbar /> <Profile /><div className='hidden-for-area'>
-            <Footer />
-          </div>
-          <div className='footer-visible'>
-            <Footer />
-          </div></>} />
-            {/* <Route path='Dashboard//Referral_Income' element={  <> <Navbar /> <Referral_Income />} /> */}
-            <Route path='Dashboard/Registration_Direct_Income' element={  <> <Navbar /> <Registration_Direct_Income /><div className='hidden-for-area'>
-            <Footer />
-          </div>
-          <div className='footer-visible'>
-            <Footer />
-          </div></>} />
-            <Route path='Dashboard/Activation_Direct_Income' element={  <> <Navbar /> <Activation_Direct_Income /><div className='hidden-for-area'>
-            <Footer />
-          </div>
-          <div className='footer-visible'>
-            <Footer />
-          </div></>} />
-            
-            <Route path='Dashboard/Matching_Income' element={  <> <Navbar /> <Matching_Income /><div className='hidden-for-area'>
-            <Footer />
-          </div>
-          <div className='footer-visible'>
-            <Footer />
-          </div></>} />
-            <Route path='Dashboard/Reward_Income' element={  <> <Navbar /> <Reward_Income /><div className='hidden-for-area'>
-            <Footer />
-          </div>
-          <div className='footer-visible'>
-            <Footer />
-          </div></>} />
-            <Route path='Dashboard/Roi_Income' element={  <> <Navbar /> <Roi_Income /><div className='hidden-for-area'>
-            <Footer />
-          </div>
-          <div className='footer-visible'>
-            <Footer />
-          </div></>} />
-            <Route path='Dashboard/Matching_Level_Income' element={  <> <Navbar /> <Matching_Level_Income /><div className='hidden-for-area'>
-            <Footer />
-          </div>
-          <div className='footer-visible'>
-            <Footer />
-          </div></>} />
-            <Route path='Dashboard/Buy_NFT' element={  <> <Navbar /> <Buy_NFT /><div className='hidden-for-area'>
-            <Footer />
-          </div>
-          <div className='footer-visible'>
-            <Footer />
-          </div></>} />
-            <Route path='Dashboard/Withdrawal_History' element={  <> <Navbar /> <Withdrawal_History /><div className='hidden-for-area'>
-            <Footer />
-          </div>
-          <div className='footer-visible'>
-            <Footer />
-          </div></>} />
-            <Route path='Dashboard/Withdrawal' element={  <> <Navbar /> <Withdrawal /><div className='hidden-for-area'>
-            <Footer />
-          </div>
-          <div className='footer-visible'>
-            <Footer />
-          </div></>} />
-            <Route path='Dashboard/Direct_Leg_Business' element={  <> <Navbar /> <Direct_Leg_Business /><div className='hidden-for-area'>
-            <Footer />
-          </div>
-          <div className='footer-visible'>
-            <Footer />
-          </div></>} />
-            <Route path='Dashboard/Level_Details' element={  <> <Navbar /> <Level_Details /><div className='hidden-for-area'>
-            <Footer />
-          </div>
-          <div className='footer-visible'>
-            <Footer />
-          </div></>} />
-            <Route path='Dashboard/Matching_Tree' element={  <> <Navbar /> <Matching_Tree /><div className='hidden-for-area'>
-            <Footer />
-          </div>
-          <div className='footer-visible'>
-            <Footer />
-          </div></>} />
-            <Route path='Dashboard/My_Referral' element={  <> <Navbar /> <My_Referral /><div className='hidden-for-area'>
-            <Footer />
-          </div>
-          <div className='footer-visible'>
-            <Footer />
-          </div></>} />
-            <Route path='Dashboard/My_Team' element={  <> <Navbar /> <My_Team /><div className='hidden-for-area'>
-            <Footer />
-          </div>
-          <div className='footer-visible'>
-            <Footer />
-          </div></>} />
-            <Route path='Dashboard/Coin_Address' element={  <> <Navbar /> <Coin_Address /><div className='hidden-for-area'>
-            <Footer />
-          </div>
-          <div className='footer-visible'>
-            <Footer />
-          </div></>} />
-            <Route path='Dashboard/NFT_Address' element={  <> <Navbar /> <NFT_Address /><div className='hidden-for-area'>
-            <Footer />
-          </div>
-          <div className='footer-visible'>
-            <Footer />
-          </div></>} />
-            <Route path='Dashboard/Self_Address' element={  <> <Navbar /> <Self_Address /><div className='hidden-for-area'>
-            <Footer />
-          </div>
-          <div className='footer-visible'>
-            <Footer />
-          </div></>} />
-          {/* <Route exact path='Dashboard' element={<Navbar />} >
+          
+          <Route exact path='Dashboard' element={<Navbar />} >
             <Route path='Home' element={ <Home /> } /> 
             <Route path='Activate_History' element={<Activate_History />} />          
             <Route path='Staking_Details' element={<Staking_Details />} />                 
             <Route path='Profile' element={<Profile />} />
-            <Route path='/Referral_Income' element={<Referral_Income />} />
+            {/* <Route path='/Referral_Income' element={<Referral_Income />} /> */}
             <Route path='Registration_Direct_Income' element={<Registration_Direct_Income />} />
             <Route path='Activation_Direct_Income' element={<Activation_Direct_Income />} />
 
@@ -209,7 +82,7 @@ function App() {
             <Route path='NFT_Address' element={<NFT_Address />} />
             <Route path='Self_Address' element={<Self_Address />} />
           </Route> 
-          <Route/> */}
+          <Route/>
         </Routes>
         <ToastContainer />
         {/* <Footer /> */}

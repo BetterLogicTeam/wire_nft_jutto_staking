@@ -13,12 +13,12 @@ const Matching_Income = () => {
         try {
 
 
-            // let ress = JSON?.parse(user);
-            // let uId = ress?.uid;
-            let user_id = localStorage.getItem('user_Id')
-            console.log('what is local storage in matching income', user_id)
+            let user = localStorage.getItem('user')
+            let ress = JSON?.parse(user);
+            let uId = ress?.uid;
+          
 
-            let responce = await API?.get(`/binaryIncome?id=${user_id}`)
+            let responce = await API?.get(`/binaryIncome?id=${uId}`)
             responce = responce?.data?.data;
 
             console.log("Res", responce);
@@ -92,7 +92,8 @@ const Matching_Income = () => {
                     data={[...currentPost]}
                     columns={matching_income.cols}
                 />
-                <Table_Buttons data={{ first_value: '1', last_value: '10', current_value: '5' }} />
+            <Table_Buttons indexOfFirstPage={indexOfFirstPage} indexOfLastPost={indexOfLastPost} setcurrentPage={setcurrentPage} currentPage={currentPage} totalData={referralApi.length} listPerpage={listPerpage} />
+
             </div>
         </div>
     );

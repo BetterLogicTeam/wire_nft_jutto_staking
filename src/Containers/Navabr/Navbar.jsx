@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Outlet, Route, Routes, useNavigate } from 'react-router-dom';
 import './Navbar.css'
 import { BsArrowRightShort } from 'react-icons/bs';
 import { BiHomeCircle, BiLineChart, BiBook, BiMessageSquareEdit } from 'react-icons/bi';
@@ -7,6 +7,7 @@ import { TbAtom } from 'react-icons/tb';
 import { MdOutlineGroup } from 'react-icons/md';
 import { FaLock } from 'react-icons/fa'
 import { Link } from 'react-router-dom';
+import { Activate_History, Buy_NFT, Coin_Address, Direct_Leg_Business, Home, Level_Details, Matching_Income, Matching_Level_Income, Matching_Tree, My_Referral, My_Team, NFT_Address, Profile, Referral_Income, Reward_Income, Roi_Income, Self_Address, Staking_Details, Withdrawal, Withdrawal_History } from '../../Routes';
 const Navbar = () => {
     const navigate = useNavigate()
     const onClickHide = ()=>{
@@ -21,6 +22,9 @@ const Navbar = () => {
         }
     }
     const onClickHideSM = ()=>{
+        let nav_panel = document.querySelector('.nav-panel')
+        nav_panel.classList.remove('d-flex');
+        nav_panel.classList.add('d-none');
         let expand_list = document.querySelectorAll('.expand-nav-sm');
         for (let y = 0; y < 5; y++) {
             expand_list[y].classList.forEach((class_item) => {
@@ -114,7 +118,7 @@ const Navbar = () => {
         <div className='row justify-content-center'>
             <div className='col-md-11'>
                 <nav class="navbar navbar-expand-lg navbar-light row d-flex flex-column">
-                    <div className='row justify-content-between brand-bar'>
+                    <div className='row justify-content-between brand-bar m-0 p-0'>
                         <img src='/favicon.png' className='navbar-brand col-lg-1 col-md-2 col-5' />
                         <button class="navbar-toggler nav-btn col-md-1 col-2 me-3" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -154,7 +158,7 @@ const Navbar = () => {
                                 <div>
                                     <button className='btn1 nav-btn-expand '><BiBook className="me-1 mb-1 " /> History</button>
                                     <div className='expand-nav  d-none flex-column'>
-                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Buy_NFT"><BsArrowRightShort /> Buy NFT</Link>
+                                        {/* <Link onClick={()=>{onClickHide()}} to="/Dashboard/Buy_NFT"><BsArrowRightShort /> Buy NFT</Link> */}
                                         <Link onClick={()=>{onClickHide()}} to="/Dashboard/Withdrawal"><BsArrowRightShort /> Withdrawal</Link>
                                         <Link onClick={()=>{onClickHide()}} to="/Dashboard/Withdrawal_History"><BsArrowRightShort /> Withdrawal History</Link>
                                     </div>
@@ -167,7 +171,7 @@ const Navbar = () => {
                                         <Link onClick={()=>{onClickHide()}} to="/Dashboard/My_Referral"><BsArrowRightShort /> My Referal</Link>
                                         <Link onClick={()=>{onClickHide()}} to="/Dashboard/My_Team"><BsArrowRightShort /> My Team</Link>
                                         <Link onClick={()=>{onClickHide()}} to="/Dashboard/Matching_Tree"><BsArrowRightShort /> Matching Tree</Link>
-                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Level_Details"><BsArrowRightShort /> Level Details</Link>
+                                        {/* <Link onClick={()=>{onClickHide()}} to="/Dashboard/Level_Details"><BsArrowRightShort /> Level Details</Link> */}
                                         <Link onClick={()=>{onClickHide()}} to="/Dashboard/Direct_Leg_Business"><BsArrowRightShort /> Direct Leg Business</Link>
                                     </div>
                                 </div>
@@ -206,11 +210,14 @@ const Navbar = () => {
                                 <div>
                                     <button className='btn1 nav-btn-expand col-12 text-start fs-6 py-2'> <BiLineChart className="me-1 mb-1" /> All Income</button>
                                     <div className='expand-nav-sm  d-none flex-column'>
-                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Referral_Income"><BsArrowRightShort /> Referral Income</Link>
-                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Matching_Level_Income"><BsArrowRightShort /> Matching Level Income</Link>
+                                    <Link onClick={()=>{onClickHide()}} to="/Dashboard/Registration_Direct_Income"><BsArrowRightShort /> Registration Direct Income</Link>
+                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Activation_Direct_Income"><BsArrowRightShort /> Activation Direct Income</Link>
+
+                                        {/* <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Referral_Income"><BsArrowRightShort /> Referral Income</Link> */}
+                                        {/* <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Matching_Level_Income"><BsArrowRightShort /> Matching Level Income</Link> */}
                                         <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Matching_Income"><BsArrowRightShort /> Matching Income</Link>
                                         <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Roi_Income"><BsArrowRightShort /> Roi Income</Link>
-                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Reward_Income"><BsArrowRightShort /> Reward Income</Link>
+                                        {/* <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Reward_Income"><BsArrowRightShort /> Reward Income</Link> */}
                                     </div>
                                 </div>
                             </li>
@@ -218,7 +225,7 @@ const Navbar = () => {
                                 <div>
                                     <button className='btn1 nav-btn-expand col-12 text-start fs-6 py-2'><BiBook className="me-1 mb-1" /> History</button>
                                     <div className='expand-nav-sm  d-none flex-column'>
-                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Buy_NFT"><BsArrowRightShort /> Buy NFT</Link>
+                                        {/* <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Buy_NFT"><BsArrowRightShort /> Buy NFT</Link> */}
                                         <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Withdrawal"><BsArrowRightShort /> Withdrawal</Link>
                                         <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Withdrawal_History"><BsArrowRightShort /> Withdrawal History</Link>
                                     </div>
@@ -231,7 +238,7 @@ const Navbar = () => {
                                         <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/My_Referal"><BsArrowRightShort /> My Referal</Link>
                                         <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Matching_Income"><BsArrowRightShort /> My Team</Link>
                                         <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Matching_Tree"><BsArrowRightShort /> Matching Tree</Link>
-                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Level_Details"><BsArrowRightShort /> Level Details</Link>
+                                        {/* <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Level_Details"><BsArrowRightShort /> Level Details</Link> */}
                                         <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Direct_Leg_Business"><BsArrowRightShort /> Direct Leg Business</Link>
                                     </div>
                                 </div>
@@ -255,6 +262,43 @@ const Navbar = () => {
                     </div>
                 </nav>
             </div>
+
+            <Routes>
+
+                <Route path='/' element={<Home />} />
+                <Route path='/dashboard/Activate_History' element={<Activate_History />} />
+                <Route path='/dashboard/Staking_Details' element={<Staking_Details />} />
+                <Route path='/dashboard/Profile' element={<Profile />} />
+                <Route path='/dashboard/Referral_Income' element={<Referral_Income />} />
+                <Route path='/dashboard/Matching_Income' element={<Matching_Income />} />
+                <Route path='/dashboard/Reward_Income' element={<Reward_Income />} />
+                <Route path='/dashboard/Roi_Income' element={<Roi_Income />} />
+                <Route path='/dashboard/Matching_Level_Income' element={<Matching_Level_Income />} />
+                <Route path='/dashboard/Buy_NFT' element={<Buy_NFT />} />
+                <Route path='/dashboard/Withdrawal_History' element={<Withdrawal_History />} />
+                <Route path='/dashboard/Withdrawal' element={<Withdrawal />} />
+                <Route path='/dashboard/Direct_Leg_Business' element={<Direct_Leg_Business />} />
+                <Route path='/dashboard/Level_Details' element={<Level_Details />} />
+                <Route path='/dashboard/Matching_Tree' element={<Matching_Tree />} />
+                <Route path='/dashboard/My_Referral' element={<My_Referral />} />
+                <Route path='/dashboard/My_Team' element={<My_Team />} />
+                <Route path='/dashboard/Coin_Address' element={<Coin_Address />} />
+                <Route path='/dashboard/NFT_Address' element={<NFT_Address />} />
+                <Route path='/dashboard/Self_Address' element={<Self_Address />} />
+                {/* <Route path='/dashboard/Change_Password' element={<Change_Password />} /> */}
+                {/* <Route path='/dashboard/Mint' element={<Mint />} /> */}
+                {/* <Route path='/dashboard/Forgat_Password' element={<Forgat_Password />} />
+                <Route path='/dashboard/ChangePasswor_eamil' element={<ChangePasswor_eamil />} />
+                <Route path='/dashboard/Varify_email_change_password' element={<Varify_email_change_password />} />
+                <Route path='/dashboard/Update_profile_email' element={<Update_profile_email />} /> */}
+
+
+
+
+
+
+            </Routes>
+            <Outlet />
         </div>
     );
 }

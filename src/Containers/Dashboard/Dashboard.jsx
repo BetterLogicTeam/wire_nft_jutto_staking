@@ -46,9 +46,10 @@ const Dashboard = () => {
 
   const dashboard = useSelector((state) => state?.dashboard);
   // const user = localStorage.getItem("user");
-  let user = localStorage.getItem('user_Id')
-
-
+  let user = localStorage.getItem('user')
+  let ress = JSON.parse(user);
+  let uId = ress?.uid;
+console.log("Usererrr",uId);
 
   const dispatch = useDispatch();
 
@@ -73,7 +74,7 @@ const Dashboard = () => {
 
     try {
 
-      let res = await API.get(`/get_betawallet?id=${user}`)
+      let res = await API.get(`/get_betawallet?id=${uId}`)
       res = res.data.data[0]
       console.log("what is result dashboard", res);
       setCtoIncome(res.cto_income)

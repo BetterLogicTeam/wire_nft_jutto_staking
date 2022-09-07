@@ -3,7 +3,7 @@ import './Table.css';
 const Table = ({columns, data}) => {
     const {getTableProps, getTableBodyProps, headerGroups, rows, prepareRow} = useTable({columns, data})
     return ( 
-        <div className='d-flex mt-md-3'>
+        <div className='d-flex mt-md-3 TableOver'>
                 <table {...getTableProps()}>
                     <thead className='border_bottom'>
                         {headerGroups.map(headerGroup => (

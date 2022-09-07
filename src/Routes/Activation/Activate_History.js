@@ -13,13 +13,13 @@ const Activate_History = () => {
     const referral_API = async () => {
         try {
 
-            // const user = localStorage?.getItem("user");
+            const user = localStorage?.getItem("user");
 
-            // let ress = JSON.parse(user);
-            // let uId = ress?.uid;
-            let user_id = localStorage.getItem('user_Id')
+            let ress = JSON.parse(user);
+            let uId = ress?.uid;
+        
 
-            let responce = await API?.get(`activationHistory?id=${user_id}`)
+            let responce = await API?.get(`activationHistory?id=${uId}`)
             let dataaa = responce?.data.data;
             console.log("responce", dataaa);
 

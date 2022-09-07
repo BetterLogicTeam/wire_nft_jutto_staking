@@ -11,20 +11,22 @@ const My_Team = () => {
 
     const [currentPage, setcurrentPage] = useState(1)
     const [listPerpage, setlistPerpage] = useState(10)
+    const [currentPage2, setcurrentPage2] = useState(1)
+    const [listPerpage2, setlistPerpage2] = useState(10)
 
 
 
     const referral_API = async () => {
         try {
 
-            // const user = localStorage?.getItem("user");
+            const user = localStorage?.getItem("user");
 
-            // let ress = JSON.parse(user);
-            // let uId = ress?.uid;
-            let user_id = localStorage.getItem('user_Id')
+            let ress = JSON.parse(user);
+            let uId = ress?.uid;
+            // let user_id = localStorage.getItem('user_Id')
 
             let responce = await API?.post(`downlineDetails`, {
-                id: user_id,
+                id: uId,
                 position: 1,
                 SearchTerm: "",
                 status: 2
@@ -65,14 +67,14 @@ const My_Team = () => {
     const referral_API_Right = async () => {
         try {
 
-            // const user = localStorage?.getItem("user");
+            const user = localStorage?.getItem("user");
 
-            // let ress = JSON.parse(user);
-            // let uId = ress?.uid;
-            let user_id = localStorage.getItem('user_Id')
+            let ress = JSON.parse(user);
+            let uId = ress?.uid;
+            // let user_id = localStorage.getItem('user_Id')
 
             let responce = await API?.post(`downlineDetails`, {
-                id: user_id,
+                id: uId,
                 position: 2,
                 SearchTerm: "",
 
@@ -120,8 +122,10 @@ const My_Team = () => {
 
     const indexOfLastPost = currentPage * listPerpage;
     const indexOfFirstPage = indexOfLastPost - listPerpage;
+    const indexOfLastPost2 = currentPage2 * listPerpage2;
+    const indexOfFirstPage2 = indexOfLastPost2 - listPerpage2;
     const currentPost = referralApi.slice(indexOfFirstPage, indexOfLastPost)
-    const currentPostRight = referralApi_right.slice(indexOfFirstPage, indexOfLastPost)
+    const currentPostRight = referralApi_right.slice(indexOfFirstPage2, indexOfLastPost2)
 
 
     var [My_Team, set_My_Team] = new useState({
@@ -147,9 +151,11 @@ const My_Team = () => {
 
 
     return (
+        <>
+        <div className="" style={{padding:"5px 30px 5px 30px"}}>
         <div className="row justify-content-center">
             <PagePath data={{ page_name: "My Referral", page_path: "Team Details / My Referral" }} />
-            <div className="row my-4 align-items-end justify-content-center gy-4">
+            {/* <div className="row my-4 align-items-end justify-content-center gy-4">
                 <div className="col-md-4 col-lg-3 col-8">
                     <p className="p-color p-0 m-0">Select Date</p>
                     <input type="date" prototype="Select Level" className="input bg-color ps-4" />
@@ -159,7 +165,7 @@ const My_Team = () => {
                     <input type="date" prototype="Select Level" className="input bg-color ps-4" />
                 </div>
                 <button className="bg-primary col-md-2 col-6 col-lg-1 btn text-white">Search</button>
-            </div>
+            </div> */}
             <div className="col-md-6 py-3 text-center">
 
 
@@ -168,7 +174,7 @@ const My_Team = () => {
                     columns={My_Team.cols}
                 />
 
-                <Table_Buttons data={{ first_value: '1', last_value: '10', current_value: '5' }} />
+                <Table_Buttons indexOfFirstPage={indexOfFirstPage} indexOfLastPost={indexOfLastPost} setcurrentPage={setcurrentPage} currentPage={currentPage} totalData={referralApi.length} listPerpage={listPerpage} />
             </div>
             <div className="col-md-6 py-3 text-center">
 
@@ -178,9 +184,12 @@ const My_Team = () => {
                     columns={My_Team.cols}
                 />
 
-                <Table_Buttons data={{ first_value: '1', last_value: '10', current_value: '5' }} />
+                <Table_Buttons indexOfFirstPage={indexOfFirstPage2} indexOfLastPost={indexOfLastPost2} setcurrentPage={setcurrentPage2} currentPage={currentPage2} totalData={referralApi_right.length} listPerpage={listPerpage2} />
             </div>
         </div>
+        </div>
+        
+        </>
     );
 }
 

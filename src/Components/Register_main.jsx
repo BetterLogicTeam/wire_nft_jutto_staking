@@ -6,28 +6,35 @@ import { useState } from 'react';
 import { loadWeb3 } from "../api.js";
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { tokenAddress,tokenAbi} from '../Utils/token'
-import {contractAddress,contractAbi} from '../Utils/contract'
+import { tokenAddress, tokenAbi } from '../Utils/token'
+import { contractAddress, contractAbi } from '../Utils/contract'
+import { toast } from 'react-toastify';
 function Register_main({ notify }) {
     const navigate = useNavigate();
-    const [matic,setmatic] = useState(0)
-    const [ule,setule] = useState(0)
+    const [matic, setmatic] = useState(0)
+    const [ule, setule] = useState(0)
     const [uid, setuid] = useState("");
     const [address, setaddress] = useState('');
     const [connected, setconnected] = useState('MetaMask is not connected..!..Wait...')
 
-    const callapi = async (position) => {
+    const callapi = async (position,sellCall) => {
         let res = await axios.post('https://ulematic-api.herokuapp.com/registration',
-            { sid: uid, accountnumber: address, position: position, amount: 10, traxn: "bvcbfghfghhgutu567567yuyuthghghjhjhjjh" });
+            {
+                sid: uid,
+                accountnumber: address,
+                position: position,
+                amount: 10,
+                traxn: sellCall
+            });
         console.log(res.data)
         if (res.data.data == 'Accountnumber already exists in joinnow_temp !!') {
-            notify('Account Already Resgistered with this ID')
+            toast.error('Account Already Resgistered with this ID')
             navigate('/Login_main')
 
         }
         else if (res.data.success == true) {
             console.log(res.data)
-            notify('Registered Successfully')
+            toast.success('Registered Successfully')
             localStorage.setItem('user_Id', uid)
 
             callLoginApi()
@@ -36,12 +43,18 @@ function Register_main({ notify }) {
     const callLoginApi = async () => {
         let res = await axios.get(`https://ulematic-api.herokuapp.com/login?id=${uid}`);
         console.log(res)
-        if (res.data.success == true) {
-            console.log(res.data)
-            notify('Login Successfully')
+        if (res.data.data !== 0) {
+            toast.success('Login Successfully')
+            localStorage.setItem("isAuthenticated", true);
+            localStorage.setItem("user", JSON.stringify(res.data.data));  
+            toast.success('Login Successfully')
 
             navigate('/Dashboard/Home')
         }
+        else{
+            toast.error("Something went wrong ! ");
+      
+          }
     }
     const ConnectToMetaMask = async () => {
         let acc = await loadWeb3();
@@ -56,41 +69,42 @@ function Register_main({ notify }) {
             setconnected('MetaMask is connected... Ready To Register')
         }
     }
-    const cotractCall = async ()=>{
+    const cotractCall = async (position) => {
         let acc = await loadWeb3();
         if (acc == 'No Wallet') {
-            notify('No Wallet')
+            toast.error('No Wallet')
         }
         else if (acc == 'Wrong Network') {
-            notify('Wrong Network')
+            toast.error('Wrong Network')
         }
         else {
             setaddress(acc)
             setconnected('MetaMask is connected... Ready To Register')
-            try{
-                let contract = await new window.web3.eth.Contract(contractAbi,contractAddress)
-                let token = await new window.web3.eth.Contract(tokenAbi,tokenAddress)
-                let approveCall = await token.methods.approve(contractAddress,ule).send({from:acc});
-                notify('Approved')
-                let sellCall =  await contract.methods.sell(ule).send({from:acc,value:matic});
-                notify('Transection Succesfull')
+            try {
+                let contract = await new window.web3.eth.Contract(contractAbi, contractAddress)
+                let token = await new window.web3.eth.Contract(tokenAbi, tokenAddress)
+                let approveCall = await token.methods.approve(contractAddress, ule).send({ from: acc });
+                toast.success('Approved')
+                let sellCall = await contract.methods.sell(ule).send({ from: acc, value: matic });
+                toast.success('Transection Succesfull')
+                sellCall = sellCall.transactionHash
+                callapi(position,sellCall)
             }
-            catch(err)
-            {
-                console.log(err)
+            catch (err) {
+                console.log("error while calling fuction sell", err)
             }
-            
+
         }
     }
-    const callMaticUrliApi = async ()=>{
+    const callMaticUrliApi = async () => {
         let res = await axios.get(`https://ulematic.herokuapp.com/live_rate_matic`);
-        setmatic((Number(res.data.data[0].usdperunit)*10))
+        setmatic((Number(res.data.data[0].usdperunit) * 10))
 
     }
-    const callUleApi = async ()=>{
+    const callUleApi = async () => {
         let res = await axios.get(`https://ulematic.herokuapp.com/live_rate`);
-        setule((Number(res.data.data[0].usdperunit)*10))
-        console.log(Number(res.data.data[0].usdperunit)*10)
+        setule((Number(res.data.data[0].usdperunit) * 10))
+        console.log(Number(res.data.data[0].usdperunit) * 10)
 
     }
 
@@ -143,7 +157,7 @@ function Register_main({ notify }) {
                                             <h4 className=' text-dark fs-5 my-3'>Referral Confirmation</h4>
                                             <p>Your Current Referral ID is {uid}</p>
                                             <div className=' d-flex flex-row align-items-center justify-content-center my-2'>
-                                                <p className=' p-0  m-0'>Matic</p> <input className='input1 mx-2' defaultValue={matic} value={matic} disabled  type={'number'} />
+                                                <p className=' p-0  m-0'>Matic</p> <input className='input1 mx-2' defaultValue={matic} value={matic} disabled type={'number'} />
                                                 <p className=' p-0  m-0'>ULE</p> <input className='input1 mx-2' defaultValue={ule} value={ule} disabled type={'number'} />
                                             </div>
                                             <select className="boxset" name='position'>
@@ -151,10 +165,10 @@ function Register_main({ notify }) {
                                                 <option value={2}>Right</option>
                                             </select>
                                             <div className=' mt-4'>
-                                                <button className="btn bt loginbtn px-3 mx-2" onClick={ async () => {
+                                                <button className="btn bt loginbtn px-3 mx-2" onClick={async () => {
                                                     let position = document.getElementsByName('position')[0].value;
-                                                    await cotractCall()
-                                                    callapi(position.value)
+                                                    await cotractCall(position.value)
+
                                                     let modelRegister = document.querySelector('.modelRegister')
                                                     let modelRegisterR = document.querySelector('.bord')
                                                     modelRegisterR.classList.remove('d-none')

@@ -14,12 +14,11 @@ const Roi_Income = () => {
         try {
 
             const user = localStorage?.getItem("user");
-            // let ress = JSON?.parse(user);
-            // let uId = ress?.uid;
-            let user_id = localStorage.getItem('user_Id')
-            console.log('what is inside local storage', user_id)
+            let ress = JSON?.parse(user);
+            let uId = ress?.uid;
+       
 
-            let responce = await API?.get(`/roiIncome?id=${user_id}`)
+            let responce = await API?.get(`/roiIncome?id=${uId}`)
             responce = responce?.data?.data;
 
             console.log("Res", responce);

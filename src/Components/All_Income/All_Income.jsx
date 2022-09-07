@@ -37,13 +37,13 @@ const All_Income = (props) => {
                     <div className="progress-bar-row bg-white  br-1" style={{ width: "100%" }}></div>
                 </div>
 
-                <div className="d-flex flex-row justify-content-between mt-4">
+                {/* <div className="d-flex flex-row justify-content-between mt-4">
                     <p className="h-color h4">Widrawal Income</p>
                     <p className="h-color h4">{props.data.reward_income}$</p>
                 </div>
                 <div className="progress-row bg-color br-1">
                     <div className="progress-bar-row bg-white  br-1" style={{ width: "100%" }}></div>
-                </div>
+                </div> */}
 
             </div>
         </div>

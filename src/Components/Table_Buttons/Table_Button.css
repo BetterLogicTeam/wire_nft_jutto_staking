@@ -5,3 +5,9 @@
 .bg-pp{
     background-color: #d945d2;    
 }
+.Table_Buttons{
+    overflow-x: scroll;
+}
+.Table_Buttons::-webkit-scrollbar{
+    width: 0;
+}

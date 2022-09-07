@@ -17,13 +17,13 @@ const Direct_Leg_Business = () => {
     const referral_API = async () => {
         try {
 
-            // const user = localStorage?.getItem("user");
+            const user = localStorage?.getItem("user");
 
-            // let ress = JSON.parse(user);
-            // let uId = ress?.uid;
-            let user_id = localStorage.getItem('user_Id')
+            let ress = JSON.parse(user);
+            let uId = ress?.uid;
+            // let user_id = localStorage.getItem('user_Id')
 
-            let responce = await API?.get(`directLegBusiness?id=${user_id}`)
+            let responce = await API?.get(`directLegBusiness?id=${uId}`)
             let dataaa = responce?.data.data;
             console.log("responce", dataaa);
 
@@ -89,6 +89,8 @@ const Direct_Leg_Business = () => {
                     data={[...currentPost]}
                     columns={direct_leg_business.cols}
                 />
+                <Table_Buttons indexOfFirstPage={indexOfFirstPage} indexOfLastPost={indexOfLastPost} setcurrentPage={setcurrentPage} currentPage={currentPage} totalData={referralApi.length} listPerpage={listPerpage} />
+
             </div>
         </div>
     );

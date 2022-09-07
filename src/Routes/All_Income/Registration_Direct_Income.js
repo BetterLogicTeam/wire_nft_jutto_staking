@@ -15,13 +15,13 @@ const Registration_Direct_Income = () => {
     const referral_API = async () => {
         try {
 
-            // const user = localStorage?.getItem("user");
+            const user = localStorage?.getItem("user");
 
-            // let ress = JSON.parse(user);
-            // let uId = ress?.uid;
-            let user_id = localStorage.getItem('user_Id')
+            let ress = JSON.parse(user);
+            let uId = ress?.uid;
+            // let user_id = localStorage.getItem('user_Id')
 
-            let responce = await API?.get(`registrationDirectIncome?id=${user_id}`)
+            let responce = await API?.get(`registrationDirectIncome?id=${uId}`)
             let dataaa = responce?.data.data;
             console.log("responce", dataaa);
 
@@ -86,7 +86,8 @@ const Registration_Direct_Income = () => {
                     data={[...currentPost]}
                     columns={referral_income.cols}
                 />
-                <Table_Buttons data={{ first_value: '1', last_value: '10', current_value: '5' }} />
+                                <Table_Buttons indexOfFirstPage={indexOfFirstPage} indexOfLastPost={indexOfLastPost} setcurrentPage={setcurrentPage} currentPage={currentPage} totalData={referralApi.length} listPerpage={listPerpage} />
+
             </div>
         </div>
     );

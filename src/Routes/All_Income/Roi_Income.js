@@ -28,7 +28,7 @@ const Roi_Income = () => {
                 arr?.push({
                     sr: index + 1,
                     id: `${item?.uid} `,
-                    token: `${item?.package} `,
+                    // token: `${item?.plan_amount} `,
                     income_usd: `${item?.plan_amount} $`,
                     // date:moment(item?.edate).format("M/D/YYYY h:m:s A")
                     date: item?.edate
@@ -40,15 +40,7 @@ const Roi_Income = () => {
 
             }
             )
-            console.log("responce", arr);
-
-
             setreferralApi(arr)
-
-            console.log('what data from roi', referralApi)
-
-
-
         } catch (e) {
             console.log("Error While calling Referrer API", e);
         }
@@ -68,7 +60,7 @@ const Roi_Income = () => {
         cols: [
             { Header: 'S.No', accessor: 'sr' },
             { Header: 'ID', accessor: 'id' },
-            { Header: 'Package(USD)', accessor: 'token' },
+            // { Header: 'Package(USD)', accessor: 'token' },
             { Header: 'Income(USD)', accessor: 'income_usd' },
             { Header: 'Date', accessor: 'date' }],
         rows: [
@@ -81,7 +73,7 @@ const Roi_Income = () => {
     return (
         <div className="row justify-content-center">
             <div className="col-md-11 py-3">
-                <PagePath data={{ page_name: "ROI Income", page_path: "All Income / ROI Income" }} />
+                <PagePath data={{ page_name: "Activation ROI Income", page_path: "All Income / Activation ROI Income" }} />
                 <Table
                     data={[...currentPost]}
                     columns={roi_income.cols}

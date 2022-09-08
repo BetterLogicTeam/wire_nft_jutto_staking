@@ -1,0 +1,36 @@
+.inputAffiliate {
+    border: 1px solid #fff!important;
+    border-radius: 15rem;
+    padding: 10px 10px 10px 1rem;
+    width: 70%!important;
+}
+
+.All_Participates, .bg-color {
+    /* background-color: #09456b; */
+}
+.main_class_copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: end;
+}
+.default-btn {
+    text-decoration: none;
+    color: #fff;
+    padding: 0 1.7rem;
+    line-height: 40px;
+    border-radius: 99px;
+    font-size: 1rem;
+    -webkit-transform-origin: right;
+    transform-origin: right;
+    transition: all .3s ease;
+       background-color: transparent !important;
+       border: 1px solid #fff;
+
+    font-weight: 700;
+}
+
+.main_div_Affiliate{
+    display: flex;
+    justify-content: space-around;
+}

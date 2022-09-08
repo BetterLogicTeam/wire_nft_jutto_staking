@@ -27,7 +27,7 @@ const Registration_Direct_Income = () => {
 
             let arr = []
             dataaa.forEach((item, index) => {
-                console.log("item", item);
+               
 
 
                 arr?.push({
@@ -35,14 +35,14 @@ const Registration_Direct_Income = () => {
                     amount: item?.income,
                     from_id: item?.uid,
 
-                    date: moment(item?.edate).format("M/D/YYYY h:m:s A")
+                    date: moment(item?.dd).format("M/D/YYYY h:m:s A")
                 });
 
 
 
             }
             )
-            console.log("responce", arr);
+           
 
             setreferralApi(arr)
 
@@ -65,7 +65,7 @@ const Registration_Direct_Income = () => {
     var [referral_income, set_referral_income] = new useState({
         cols: [
             { Header: 'S.No', accessor: 'sr' },
-            { Header: 'From ID', accessor: 'from_id' },
+            { Header: 'User ID', accessor: 'from_id' },
             // {Header:'Package',accessor:'package'},
             // {Header:'Token',accessor:'token'},
             { Header: 'Amount(USD)', accessor: 'amount' },
@@ -81,7 +81,7 @@ const Registration_Direct_Income = () => {
     return (
         <div className="row justify-content-center">
             <div className="col-md-11 py-3">
-                <PagePath data={{ page_name: "Referral Income", page_path: "All Income / Referral Income" }} />
+                <PagePath data={{ page_name: "Registration Direct Income", page_path: "All Income / Registration Direct Income" }} />
                 <Table
                     data={[...currentPost]}
                     columns={referral_income.cols}

@@ -1,0 +1,31 @@
+.rrp{
+    background-image: linear-gradient(to right top, #2b3f5e, #135f83, #00829e, #00a5ad, #0fc7ad);
+    margin: 0 9px !important;
+    border-radius: 13px;
+    padding: 0 13px;
+}
+.input_and_text{
+    display: flex;
+    justify-content: space-around;
+}
+
+.input_width{
+    margin-left: 5rem;
+}
+
+.btn_here{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media screen and (max-width:800px) {
+    .input_and_text{
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+    }
+}

@@ -32,14 +32,12 @@ const My_Referral = () => {
 
             let arr = []
             dataaa.forEach((item, index) => {
-                console.log("item", item);
+              
 
 
                 arr?.push({
                     sr: index + 1,
-                    package: item?.package,
-
-
+                    package: item?.packagename,
                     amount: item?.income,
                     user_id: item?.uid,
                     date: item?.edate,
@@ -51,7 +49,7 @@ const My_Referral = () => {
 
             }
             )
-            console.log("responce", arr);
+           
 
             setreferralApi(arr)
 
@@ -84,7 +82,7 @@ const My_Referral = () => {
 
                 arr?.push({
                     sr: index + 1,
-                    package: item?.package,
+                    package: item?.packagename,
                     amount: item?.income,
                     user_id: item?.uid,
                     date: item?.edate,

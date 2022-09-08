@@ -8,6 +8,10 @@ import { MdOutlineGroup } from 'react-icons/md';
 import { FaLock } from 'react-icons/fa'
 import { Link } from 'react-router-dom';
 import { Activate_History, Buy_NFT, Coin_Address, Direct_Leg_Business, Home, Level_Details, Matching_Income, Matching_Level_Income, Matching_Tree, My_Referral, My_Team, NFT_Address, Profile, Referral_Income, Reward_Income, Roi_Income, Self_Address, Staking_Details, Withdrawal, Withdrawal_History } from '../../Routes';
+import Pool_income from '../../Routes/All_Income/Pool_income';
+import Matics_tree from '../../Routes/Team_Details/Matics_tree';
+import { Activate } from '../../Routes/Activation/Activation';
+import Matics_Downline from '../../Routes/Team_Details/Matics_Downline';
 const Navbar = () => {
     const navigate = useNavigate()
     const onClickHide = ()=>{
@@ -133,9 +137,11 @@ const Navbar = () => {
                                 <div>
                                     <button className='btn1 nav-btn-expand '><TbAtom className="me-1 mb-1 " /> Activation</button>
                                     <div className='expand-nav  d-none flex-column'>
+                                    <Link onClick={()=>{onClickHide()}} to="/Dashboard/Activate"><BsArrowRightShort />  Activation</Link>
+
                                         <Link onClick={()=>{onClickHide()}} to="/Dashboard/Activate_History"><BsArrowRightShort /> Activate History</Link>
-                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Staking_Details"><BsArrowRightShort /> Staking Details</Link>
-                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Profile"><BsArrowRightShort /> Profile</Link>
+                                        {/* <Link onClick={()=>{onClickHide()}} to="/Dashboard/Staking_Details"><BsArrowRightShort /> Staking Details</Link>
+                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Profile"><BsArrowRightShort /> Profile</Link> */}
                                     </div>
                                 </div>
                             </li>
@@ -145,11 +151,13 @@ const Navbar = () => {
                                     <div className='expand-nav  d-none flex-column'>
                                         {/* <Link to="/Dashboard/Referral_Income"><BsArrowRightShort /> Referral Income</Link> */}
                                         <Link onClick={()=>{onClickHide()}} to="/Dashboard/Registration_Direct_Income"><BsArrowRightShort /> Registration Direct Income</Link>
+                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Registration_Roi_Income"><BsArrowRightShort /> Registration Roi Income</Link>
+                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Roi_Income"><BsArrowRightShort />Activation Roi Income</Link>
                                         <Link onClick={()=>{onClickHide()}} to="/Dashboard/Activation_Direct_Income"><BsArrowRightShort /> Activation Direct Income</Link>
 
-                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Matching_Income"><BsArrowRightShort /> Matching Income</Link>
-                                        {/* <Link to="/Dashboard/Matching_Level_Income"><BsArrowRightShort /> Matching Level Income</Link> */}
-                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Roi_Income"><BsArrowRightShort /> Roi Income</Link>
+                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Matching_Income"><BsArrowRightShort /> Activation Matching Income</Link>
+                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Pool_income"><BsArrowRightShort /> Poll Income</Link>
+
                                         {/* <Link to="/Dashboard/Reward_Income"><BsArrowRightShort /> Reward Income</Link> */}
                                     </div>
                                 </div>
@@ -171,7 +179,11 @@ const Navbar = () => {
                                         <Link onClick={()=>{onClickHide()}} to="/Dashboard/My_Referral"><BsArrowRightShort /> My Referal</Link>
                                         <Link onClick={()=>{onClickHide()}} to="/Dashboard/My_Team"><BsArrowRightShort /> My Team</Link>
                                         <Link onClick={()=>{onClickHide()}} to="/Dashboard/Matching_Tree"><BsArrowRightShort /> Matching Tree</Link>
-                                        {/* <Link onClick={()=>{onClickHide()}} to="/Dashboard/Level_Details"><BsArrowRightShort /> Level Details</Link> */}
+                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Matics_tree"><BsArrowRightShort /> Matrix Tree</Link>
+                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Matics_Downline"><BsArrowRightShort />Matrix Downline</Link>
+
+
+                                        {/* <Link onClick={()=>{onClickHide()}} to="/Dashboard/Level_Details"><BsArrowRightShort /> Level Details</Link>  */}
                                         <Link onClick={()=>{onClickHide()}} to="/Dashboard/Direct_Leg_Business"><BsArrowRightShort /> Direct Leg Business</Link>
                                     </div>
                                 </div>
@@ -181,8 +193,8 @@ const Navbar = () => {
                                     <button className='btn1 nav-btn-expand'><BiMessageSquareEdit className="me-1 mb-1 " /> Address</button>
                                     <div className='expand-nav  d-none flex-column'>
                                         <Link onClick={()=>{onClickHide()}} to="/Dashboard/Self_Address"><BsArrowRightShort /> Self Address</Link>
-                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Coin_Address"><BsArrowRightShort /> Coin Address</Link>
-                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/NFT_Address"><BsArrowRightShort /> NFT Address</Link>
+                                        <Link onClick={()=>{onClickHide()}} to="/Dashboard/Coin_Address"><BsArrowRightShort /> Contract Address</Link>
+                                        {/* <Link onClick={()=>{onClickHide()}} to="/Dashboard/NFT_Address"><BsArrowRightShort /> NFT Address</Link> */}
                                     </div>
                                 </div>
                             </li>
@@ -200,9 +212,11 @@ const Navbar = () => {
                                 <div>
                                     <button className='btn1 nav-btn-expand col-12 text-start fs-6 py-2'><TbAtom className="me-1 mb-1" /> Activation</button>
                                     <div className='expand-nav-sm  d-none flex-column'>
+                                    <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Activate"><BsArrowRightShort />Activation</Link>
+
                                         <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Activate_History"><BsArrowRightShort /> Activate History</Link>
-                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Staking_Details"><BsArrowRightShort /> Staking Details</Link>
-                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Profile"><BsArrowRightShort /> Profile</Link>
+                                        {/* <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Staking_Details"><BsArrowRightShort /> Staking Details</Link>
+                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Profile"><BsArrowRightShort /> Profile</Link> */}
                                     </div>
                                 </div>
                             </li>
@@ -214,9 +228,11 @@ const Navbar = () => {
                                         <Link onClick={()=>{onClickHide()}} to="/Dashboard/Activation_Direct_Income"><BsArrowRightShort /> Activation Direct Income</Link>
 
                                         {/* <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Referral_Income"><BsArrowRightShort /> Referral Income</Link> */}
-                                        {/* <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Matching_Level_Income"><BsArrowRightShort /> Matching Level Income</Link> */}
-                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Matching_Income"><BsArrowRightShort /> Matching Income</Link>
-                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Roi_Income"><BsArrowRightShort /> Roi Income</Link>
+                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Matching_Income"><BsArrowRightShort /> Activation Matching Income</Link>
+                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Roi_Income"><BsArrowRightShort />Activation Roi Income</Link>
+                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Registration_Roi_Income"><BsArrowRightShort /> Registration Roi Income</Link>
+                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Pool_income"><BsArrowRightShort />Pool Income</Link>
+
                                         {/* <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Reward_Income"><BsArrowRightShort /> Reward Income</Link> */}
                                     </div>
                                 </div>
@@ -238,6 +254,10 @@ const Navbar = () => {
                                         <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/My_Referal"><BsArrowRightShort /> My Referal</Link>
                                         <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Matching_Income"><BsArrowRightShort /> My Team</Link>
                                         <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Matching_Tree"><BsArrowRightShort /> Matching Tree</Link>
+                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Matics_tree"><BsArrowRightShort /> Matrix Tree</Link>
+                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Matics_Downline"><BsArrowRightShort /> Matrix Downline</Link>
+
+
                                         {/* <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Level_Details"><BsArrowRightShort /> Level Details</Link> */}
                                         <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Direct_Leg_Business"><BsArrowRightShort /> Direct Leg Business</Link>
                                     </div>
@@ -248,8 +268,8 @@ const Navbar = () => {
                                     <button className='btn1 nav-btn-expand col-12 text-start fs-6 py-2'><BiMessageSquareEdit className="me-1 mb-1" /> Address</button>
                                     <div className='expand-nav-sm  d-none flex-column'>
                                         <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Self_Address"><BsArrowRightShort /> Self Address</Link>
-                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Coin_Address"><BsArrowRightShort /> Coin Address</Link>
-                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/NFT_Address"><BsArrowRightShort /> NFT Address</Link>
+                                        <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/Coin_Address"><BsArrowRightShort /> Contract Address</Link>
+                                        {/* <Link onClick={()=>{onClickHideSM()}} to="/Dashboard/NFT_Address"><BsArrowRightShort /> NFT Address</Link> */}
                                     </div>
                                 </div>
                             </li>
@@ -266,6 +286,8 @@ const Navbar = () => {
             <Routes>
 
                 <Route path='/' element={<Home />} />
+            <Route path='/dashboard/Activate' element={<Activate />} />          
+
                 <Route path='/dashboard/Activate_History' element={<Activate_History />} />
                 <Route path='/dashboard/Staking_Details' element={<Staking_Details />} />
                 <Route path='/dashboard/Profile' element={<Profile />} />
@@ -273,13 +295,19 @@ const Navbar = () => {
                 <Route path='/dashboard/Matching_Income' element={<Matching_Income />} />
                 <Route path='/dashboard/Reward_Income' element={<Reward_Income />} />
                 <Route path='/dashboard/Roi_Income' element={<Roi_Income />} />
-                <Route path='/dashboard/Matching_Level_Income' element={<Matching_Level_Income />} />
+                <Route path='/dashboard/Registration_Roi_Income' element={<Matching_Level_Income />} />
                 <Route path='/dashboard/Buy_NFT' element={<Buy_NFT />} />
+            <Route path='/dashboard/Pool_income' element={<Pool_income />} />
+            <Route path='/dashboard/Matics_Downline' element={<Matics_Downline />} />
+
+
                 <Route path='/dashboard/Withdrawal_History' element={<Withdrawal_History />} />
                 <Route path='/dashboard/Withdrawal' element={<Withdrawal />} />
                 <Route path='/dashboard/Direct_Leg_Business' element={<Direct_Leg_Business />} />
                 <Route path='/dashboard/Level_Details' element={<Level_Details />} />
                 <Route path='/dashboard/Matching_Tree' element={<Matching_Tree />} />
+            <Route path='/dashboard/Matics_tree' element={<Matics_tree />} />
+
                 <Route path='/dashboard/My_Referral' element={<My_Referral />} />
                 <Route path='/dashboard/My_Team' element={<My_Team />} />
                 <Route path='/dashboard/Coin_Address' element={<Coin_Address />} />

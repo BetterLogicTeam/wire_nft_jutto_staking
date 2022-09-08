@@ -21,15 +21,16 @@ const Matching_Income = () => {
             let responce = await API?.get(`/binaryIncome?id=${uId}`)
             responce = responce?.data?.data;
 
-            console.log("Res", responce);
+            console.log("responce", responce);
             let arr = []
             responce?.forEach((item, index) => {
 
                 arr?.push({
                     sr: index + 1,
+                    uid:item.uid,
 
-                    capping_amount: `${item?.capingamount} `,
-                    matching_business: `${item?.binaryincome} $`,
+                    // capping_amount: `${item?.capingamount} `,
+                    matching_business: `${item?.paidpv} `,
                     // date:moment(item?.edate).format("M/D/YYYY h:m:s A")
                     date: item?.binarydate,
                     net_income: item?.netincome,
@@ -41,7 +42,7 @@ const Matching_Income = () => {
 
             }
             )
-            console.log("responce", arr);
+            
 
 
             setreferralApi(arr)
@@ -71,8 +72,10 @@ const Matching_Income = () => {
     var [matching_income, set_matching_income] = new useState({
         cols: [
             { Header: 'S.No', accessor: 'sr' },
+            { Header: 'User id', accessor: 'uid' },
+
             { Header: 'Matching Business', accessor: 'matching_business' },
-            { Header: 'Capping Amount', accessor: 'capping_amount' },
+            // { Header: 'Capping Amount', accessor: 'capping_amount' },
             { Header: 'Net Income', accessor: 'net_income' },
             { Header: 'Date', accessor: 'date' }],
         rows: [
@@ -87,7 +90,7 @@ const Matching_Income = () => {
     return (
         <div className="row justify-content-center">
             <div className="col-md-11 py-3">
-                <PagePath data={{ page_name: "Matching Income", page_path: "All Income / Matching Income" }} />
+                <PagePath data={{ page_name: "Activation Matching Income", page_path: "All Income /Activation Matching Income" }} />
                 <Table
                     data={[...currentPost]}
                     columns={matching_income.cols}

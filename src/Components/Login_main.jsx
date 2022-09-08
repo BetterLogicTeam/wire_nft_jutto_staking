@@ -14,18 +14,34 @@ function Login_main({ notify }) {
   const [connected, setconnected] = useState('MetaMask is not connected..!..Wait...')
 
   const callapi = async () => {
-    let res = await axios.get(`https://ulematic-api.herokuapp.com/login?id=${uid}`);
-    console.log("logindata",res.data.data)
-    if (res.data.data !== 0) {
-     
-      toast.success('Login Successfully')
-      localStorage.setItem("isAuthenticated", true);
-      localStorage.setItem("user", JSON.stringify(res.data.data));
-      navigate('/Dashboard/Home')
+    if(uid.length>6){
+      let res = await axios.get(`https://ulematic-api.herokuapp.com/login?id='${uid}'`);
+      console.log("logindata",res.data.data)
+      if (res.data.data !== 0) {
+       
+        toast.success('Login Successfully')
+        localStorage.setItem("isAuthenticated", true);
+        localStorage.setItem("user", JSON.stringify(res.data.data));
+        navigate('/Dashboard/Home')
+      }else{
+        toast.error("Something went wrong ! ");
+  
+      }
     }else{
-      toast.error("Something went wrong ! ");
-
+      let res = await axios.get(`https://ulematic-api.herokuapp.com/login?id=${uid}`);
+      console.log("logindata",res.data.data)
+      if (res.data.data !== 0) {
+       
+        toast.success('Login Successfully')
+        localStorage.setItem("isAuthenticated", true);
+        localStorage.setItem("user", JSON.stringify(res.data.data));
+        navigate('/Dashboard/Home')
+      }else{
+        toast.error("Something went wrong ! ");
+  
+      }
     }
+   
 
   }
 

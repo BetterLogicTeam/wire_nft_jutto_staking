@@ -22,7 +22,7 @@ const Self_Address = () => {
 
 
                 <div className="mt-4 container">
-                    <h5 className="text-white">  Metamask Address: {address}   </h5>
+                    <h5 className="text-white">  Self Address: {address}   </h5>
                 </div>
             </div>
         </div>

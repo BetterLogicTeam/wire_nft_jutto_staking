@@ -11,6 +11,7 @@ import {
 
 } from "../../Redux/actions/dashboard";
 import { useDispatch, useSelector } from 'react-redux';
+import Affiliate from '../../Components/Affiliate_Link/Affiliate';
 
 
 
@@ -39,8 +40,22 @@ const Dashboard = () => {
   const [joinhere, setjoinhere] = useState()
   const [total_earning, setTotalEarning] = useState('')
   const [cto_income, setCtoIncome] = useState(0)
-
-
+  const [leftbusiness, setLeftbusiness] = useState();
+  const [rightbusiness, setRightbusiness] = useState();
+  const [left_direct_business, setLeft_direct_business] = useState();
+  const [right_direct_business, setRight_direct_business] = useState();
+  const [left_downline, setLeft_downline] = useState();
+  const [right_downline, setRight_downline] = useState();
+  const [left_direct, setLeft_direct] = useState();
+  const [right_direct, setRight_direct] = useState();
+  const [pack, setPack] = useState();
+  const [rlevelincom, setRlevelincom] = useState();
+  const [rdirectincom, setRdirectIncome] = useState();
+  const [binaryIncome, setBinaryIncome] = useState();
+  const [dividend_income, setDividend_income] = useState();
+  const [rank_yield_income, setRank_yield_income] = useState();
+  const [levelincome, setLevelincome] = useState(0);
+  const [rewardName, setRewardName] = useState();
 
 
 
@@ -102,12 +117,12 @@ console.log("Usererrr",uId);
       // Matching Income------------------------
       setmatchingicome(res.activation_binary_income)
       // ROI Income---------------------
-      setroiIncome(res.activation_roi_income)
+      setroiIncome(res.registration_roi_income)
       // Your total earning----------------------
       setearnAmount(res.MaxIncome)
       // out of ---------------------------------
       setTotalAmount(res.tt)
-      setjoinhere(res.totalactivationamount)
+      setjoinhere(res.activatupgradeamnt)
       setEarnAmount(res.EarnAmount)
 
       setMaxIncome(res.MaxIncome)
@@ -115,6 +130,33 @@ console.log("Usererrr",uId);
       let earned_wire = res.ParticipantEarnedWire
       setparticioatEarnd(earned_wire)
       setearendUSD(res?.ParticipantEarnedUSD)
+
+      setLeftbusiness(res.lbv);
+      setLeft_direct_business(res.left_direct_business);
+      //  Total Rightbusiness-----------
+      setRightbusiness(res.rbv);
+      setRight_direct_business(res.right_direct_business);
+      //  Net Left-----------
+      setLeft_downline(res.left_downline);
+      //  total Right-----------
+      setRight_downline(res.right_downline);
+      //  Net Left-----------
+      setLeft_direct(res.left_direct);
+      setLevelincome(res.levelincome);
+      //  total Right-----------
+      setRight_direct(res.right_direct);
+      setPack(res.direct);
+
+      setRlevelincom(res.registration_levelIncome);
+      // Matching Income------------------------
+      setRdirectIncome(res.registration_directIncome);
+      // ROI Income---------------------
+      setroiIncome(res.roiincome);
+      setBinaryIncome(res.activation_binary_income);
+      setDividend_income(res.activation_roi_income);
+      setRank_yield_income(res.activation_direct_income);
+      setRewardName(res?.pool_income);
+
 
       // console.log("ParticipantEarnedWire",earned_wire);
 
@@ -493,14 +535,64 @@ console.log("Usererrr",uId);
         </div>
         <Total_Earning data={{ netbalance: `${netBalance}`, withdrawal: `${withdrawal}` }} opt={earning} />
         <div className='col-lg-5 row m-0 gy-3 p-0'>
-          <Id_Number data={{ id: `${uID}` }} opt={id_number} />
-          <Earned_Wire data={{ joined: particioatEarnd }} opt={earned_wire} />
+          <Id_Number data={{
+            
+            id: `${pack}`,
+            left_direct: `${left_direct || "0"}`,
+            right_direct: `${right_direct || "0"}`,
+            left_direct_business: `${left_direct_business || "0"}`,
+            right_direct_business: `${right_direct_business || "0"}`,
+            
+            }} opt={id_number} />
+          <Earned_Wire data={{ 
+            
+            joined: particioatEarnd,
+              left_downline: `${left_downline || "0"}`,
+              right_downline: `${right_downline || "0"}`,
+              leftbusiness: `${leftbusiness || "0"}`,
+              rightbusiness: `${rightbusiness || "0"}`,
+            
+            }} opt={earned_wire} />
 
-          <Earned_USD data={{ earned_usd: `${earendUSD} USD`, total_usd: '652.9 ', text: "Participates have earned USD" }} />
-
+        
+          {/* <Earned_USD data={{ earned_usd: `${earendUSD} USD`, total_usd: '652.9 ', text: "Participates have earned USD" }} /> */}
+          <Affiliate
+            data={{
+              earned_usd: `http://localhost:3000/Register_main?referrallink=${uId}&position=Left`,
+              total_usd: "0",
+              text: "Affiliate Link Forum 1",
+            }}
+          />
+           <Affiliate
+            data={{
+              earned_usd: `http://localhost:3000/Register_main?referrallink=${uId}&position=Right`,
+              total_usd: "0",
+              text: "Affiliate Link Forum 2",
+            }}
+          />
         </div>
         <div className='col-lg-6 mb-5 mt-4'>
-          <All_Income data={{ referral_income: `${referral}`, total_referral_income: '100', matching_income: `${matchingicome}`, total_matching_income: '100', matching_level_income: `${machingLevel}`, total_matching_level_income: '30', rio_income: `${roiIncome}`, total_rio_income: '100', reward_income: `${cto_income}`, total_reward_income: '73' }} />
+          <All_Income data={{ 
+            referral_income: `${referral}`, 
+            registration_levelIncome: `${rlevelincom || "0"}`,
+              total_referral_income: "100",
+              registration_directIncome: `${rdirectincom || "0"}`,
+              total_matching_income: "100",
+              levelincome: `${levelincome || "0"}`,
+              total_matching_level_income: "30",
+              rio_income: `${roiIncome || "0"}`,
+              binaryIncome: `${binaryIncome || "0"}`,
+              total_rio_income: "100",
+              dividend_income: `${dividend_income || "0"}`,
+              rank_yield_income: `${rank_yield_income || "0"}`,
+              total_reward_income: `${rewardName || "0"}`,
+              
+              
+              
+              }}
+               
+               
+               />
 
         </div>
         <div className='col-lg-5 mb-5 mt-4'>

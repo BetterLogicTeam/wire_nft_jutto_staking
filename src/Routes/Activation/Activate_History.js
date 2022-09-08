@@ -25,13 +25,14 @@ const Activate_History = () => {
 
             let arr = []
             dataaa.forEach((item, index) => {
-                console.log("item", item);
+                // console.log("item", item);
 
 
                 arr?.push({
                     sr: index + 1,
+                    uid:item.uid,
                     package_amount: item?.packageamount,
-                    current_rate: item?.current_rate,
+                    remark: item?.remark,
                     txn: item?.txn,
                     date: moment(item?.edate).format("M/D/YYYY h:m:s A")
                 });
@@ -40,7 +41,7 @@ const Activate_History = () => {
 
             }
             )
-            console.log("responce", arr);
+            // console.log("responce", arr);
 
             setreferralApi(arr)
 
@@ -62,8 +63,10 @@ const Activate_History = () => {
     var [activate_history, set_activate_history] = new useState({
         cols: [
             { Header: '#', accessor: 'sr' },
+            {Header:'User_ID',accessor:'uid'},
+
             { Header: 'Package Amount', accessor: 'package_amount' },
-            { Header: 'Current Rate', accessor: 'current_rate' },
+            {Header:'Remark',accessor:'remark'},
             { Header: 'TXN', accessor: 'txn' },
             { Header: 'Date', accessor: 'date' }],
         rows: [

@@ -16,9 +16,12 @@ var bol = true;
 
 
 const Matching_Tree = () => {
-    let user_id = localStorage.getItem('user_Id')
+    const user = localStorage?.getItem("user");
+
+    let ress = JSON.parse(user);
+    let uId = ress?.uid;
     // const [userdata, setuserdata] = new useState([])
-    const [Idnumer, setIdnumer] = useState(user_id)
+    const [Idnumer, setIdnumer] = useState(uId)
     const [arrValue, setArrValue] = useState([])
 
 
@@ -258,12 +261,12 @@ const Matching_Tree = () => {
             // let uId = ress?.uid;
             // let status = ress?.status
 
-            console.log('what is inside local storage', localStorage.getItem(user_id))
+        
 
             let responce = await API?.post('/binary_tree',
                 {
                     "uid": Idnumer,
-                    "usersession_uid": 622495
+                    "usersession_uid": "1"
                 }
             )
             responce = responce?.data?.data?.recordset;
@@ -526,7 +529,7 @@ const Matching_Tree = () => {
                                                 <div className="row_2_child">
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
-                                                            <img src={userdata[1].package >= 1 ? active_user : userdata[1].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[1].package >= 1 ? active_user : userdata[1].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[1].id), addValue(userdata[1].id))} className="abc" style={{ margin: "0 25px", cursor: "pointer" }} width="50" height="50" onclick="Image_Click()" />
                                                         </button>
                                                         <div className="span" style={{ color: "#fff" }}>
@@ -627,7 +630,7 @@ const Matching_Tree = () => {
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
 
-                                                            <img src={userdata[2].package >= 1 ? active_user : userdata[2].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[2].package >= 1 ? active_user : userdata[2].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[2].id), addValue(userdata[2].id))} className="abc" style={{ margin: "0 25px", cursor: "pointer" }} width="50" height="50" onclick="Image_Click()" />
                                                         </button>
                                                         <div className="span" style={{ color: "#fff" }}>
@@ -748,7 +751,7 @@ const Matching_Tree = () => {
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
 
-                                                            <img src={userdata[3].package >= 1 ? active_user : userdata[3].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[3].package >= 1 ? active_user : userdata[3].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[3].id), addValue(userdata[3].id))} className="abc" width="50" height="50" onclick="Image_Click()" />
                                                         </button>
                                                         <div className="span" style={{ color: "#fff" }}>
@@ -852,7 +855,7 @@ const Matching_Tree = () => {
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
 
-                                                            <img src={userdata[4].package >= 1 ? active_user : userdata[4].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[4].package >= 1 ? active_user : userdata[4].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[4].id), addValue(userdata[4].id))} className="abc" width="50" height="50" onclick="Image_Click()" />
                                                         </button>
                                                         <div className="span" style={{ color: "#fff" }}>
@@ -956,7 +959,7 @@ const Matching_Tree = () => {
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
 
-                                                            <img src={userdata[5].package >= 1 ? active_user : userdata[5].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[5].package >= 1 ? active_user : userdata[5].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[5].id), addValue(userdata[5].id))} className="abc" width="50" height="50" onclick="Image_Click()" />
                                                         </button>
 
@@ -1061,7 +1064,7 @@ const Matching_Tree = () => {
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
 
-                                                            <img src={userdata[6].package >= 1 ? active_user : userdata[6].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[6].package >= 1 ? active_user : userdata[6].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[6].id), addValue(userdata[6].id))} className="abc" width="50" height="50" onclick="Image_Click()" />
                                                         </button>
                                                         <div className="span" style={{ color: "#fff" }}>
@@ -1182,7 +1185,7 @@ const Matching_Tree = () => {
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
 
-                                                            <img src={userdata[7].package >= 1 ? active_user : userdata[7].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[7].package >= 1 ? active_user : userdata[7].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[7].id), addValue(userdata[7].id))} className="abc" width="50" height="50" onclick="Image_Click()" />
                                                         </button>
                                                         <div className="span" style={{ color: "#fff" }}>
@@ -1287,7 +1290,7 @@ const Matching_Tree = () => {
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
 
-                                                            <img src={userdata[8].package >= 1 ? active_user : userdata[8].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[8].package >= 1 ? active_user : userdata[8].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[8].id), addValue(userdata[8].id))} className="abc" width="50" height="50" onclick="Image_Click()" />
                                                         </button>
                                                         <div className="span" style={{ color: "#fff" }}>
@@ -1392,7 +1395,7 @@ const Matching_Tree = () => {
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
 
-                                                            <img src={userdata[9].package >= 1 ? active_user : userdata[9].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[9].package >= 1 ? active_user : userdata[9].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[9].id), addValue(userdata[9].id))} className="abc" width="50" height="50" onclick="Image_Click()" />
                                                         </button>
                                                         <div className="span" style={{ color: "#fff" }}>
@@ -1497,7 +1500,7 @@ const Matching_Tree = () => {
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
 
-                                                            <img src={userdata[10].package >= 1 ? active_user : userdata[10].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[10].package >= 1 ? active_user : userdata[10].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[10].id), addValue(userdata[10].id))} className="abc" width="50" height="50" onclick="Image_Click()" />
                                                         </button>
                                                         <div className="span" style={{ color: "#fff" }}>
@@ -1602,7 +1605,7 @@ const Matching_Tree = () => {
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
 
-                                                            <img src={userdata[11].package >= 1 ? active_user : userdata[11].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[11].package >= 1 ? active_user : userdata[11].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[11].id), addValue(userdata[11].id))} className="abc" width="50" height="50" onclick="Image_Click()" />
                                                         </button>
                                                         <div className="span" style={{ color: "#fff" }}>
@@ -1707,7 +1710,7 @@ const Matching_Tree = () => {
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
 
-                                                            <img src={userdata[12].package >= 1 ? active_user : userdata[12].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[12].package >= 1 ? active_user : userdata[12].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[12].id), addValue(userdata[12].id))} className="abc" width="50" height="50" onclick="Image_Click()" />
                                                         </button>
                                                         <div className="span" style={{ color: "#fff" }}>
@@ -1812,7 +1815,7 @@ const Matching_Tree = () => {
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
 
-                                                            <img src={userdata[13].package >= 1 ? active_user : userdata[13].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[13].package >= 1 ? active_user : userdata[13].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[13].id), addValue(userdata[13].id))} className="abc" width="50" height="50" onclick="Image_Click()" />
                                                         </button>
                                                         <div className="span" style={{ color: "#fff" }}>
@@ -1917,7 +1920,7 @@ const Matching_Tree = () => {
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
 
-                                                            <img src={userdata[14].package >= 1 ? active_user : userdata[14].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[14].package >= 1 ? active_user : userdata[14].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[14].id), addValue(userdata[14].id))} className="abc" width="50" height="50" onclick="Image_Click()" />
                                                         </button>
                                                         <div className="span" style={{ color: "#fff" }}>

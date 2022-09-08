@@ -41,7 +41,9 @@ const Direct_Leg_Business = () => {
                     investment: item?.selfbv,
                     user_id: item?.uid,
                     date: item?.edate,
-                    team_business: item?.teambv
+                    team_business: item?.teambv ,
+                    group_business: item?.gbv 
+
 
                 });
 
@@ -73,6 +75,8 @@ const Direct_Leg_Business = () => {
             { Header: 'User ID', accessor: 'user_id' },
             { Header: 'Investment', accessor: 'investment' },
             { Header: 'Team Business', accessor: 'team_business' },
+            { Header: 'Group Business', accessor: 'group_business' }
+
         ],
         rows: [
             { sr: '1', user_id: '549414', investment: '25500.00', team_business: '1233' },

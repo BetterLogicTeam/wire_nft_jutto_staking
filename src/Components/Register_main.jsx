@@ -11,13 +11,15 @@ import { contractAddress, contractAbi } from '../Utils/contract'
 import { toast } from 'react-toastify';
 function Register_main({ notify }) {
     const navigate = useNavigate();
-    const [matic, setmatic] = useState(0)
-    const [ule, setule] = useState(0)
-    const [uid, setuid] = useState("");
+    let [matic, setmatic] = useState(0)
+    let [ule, setule] = useState(0)
+    let [uid, setuid] = useState("");
     const [address, setaddress] = useState('');
     const [connected, setconnected] = useState('MetaMask is not connected..!..Wait...')
 
     const callapi = async (position,sellCall) => {
+
+console.log("position",position);
         let res = await axios.post('https://ulematic-api.herokuapp.com/registration',
             {
                 sid: uid,
@@ -25,8 +27,10 @@ function Register_main({ notify }) {
                 position: position,
                 amount: 10,
                 traxn: sellCall
+                // traxn: "0x2636a0fa8327fdad7c0441b038838749cec83211bdbe955d278fbc58e1d1bace"
+
             });
-        console.log(res.data)
+        console.log("reg_Api",res)
         if (res.data.data == 'Accountnumber already exists in joinnow_temp !!') {
             toast.error('Account Already Resgistered with this ID')
             navigate('/Login_main')
@@ -35,16 +39,20 @@ function Register_main({ notify }) {
         else if (res.data.success == true) {
             console.log(res.data)
             toast.success('Registered Successfully')
-            localStorage.setItem('user_Id', uid)
+            // localStorage.setItem('user_Id', uid)
 
-            callLoginApi()
+       setTimeout(() => {
+        callLoginApi()
+       }, 50000);
+
         }
     }
     const callLoginApi = async () => {
-        let res = await axios.get(`https://ulematic-api.herokuapp.com/login?id=${uid}`);
-        console.log(res)
+        console.log("address",address)
+        let res = await axios.get(`https://ulematic-api.herokuapp.com/login?id='${address}'`);
+        console.log("login_data",res)
         if (res.data.data !== 0) {
-            toast.success('Login Successfully')
+           
             localStorage.setItem("isAuthenticated", true);
             localStorage.setItem("user", JSON.stringify(res.data.data));  
             toast.success('Login Successfully')
@@ -80,6 +88,11 @@ function Register_main({ notify }) {
         else {
             setaddress(acc)
             setconnected('MetaMask is connected... Ready To Register')
+            
+            ule=ule.toString()
+            ule= window.web3.utils.toWei(ule)
+            matic=matic.toString()
+            matic= window.web3.utils.toWei(matic)
             try {
                 let contract = await new window.web3.eth.Contract(contractAbi, contractAddress)
                 let token = await new window.web3.eth.Contract(tokenAbi, tokenAddress)
@@ -132,21 +145,26 @@ function Register_main({ notify }) {
                                         modelRegister.classList.remove('d-none')
                                         modelRegister.classList.add('d-flex')
                                     }}>Register</button>
+                                    
                                     <div className=' w-100 h-100 d-none justify-content-center align-items-center  position-absolute  modelRegister'>
                                         <div className=' bg-white bord border-dark py-3 px-5 flex-column justify-content-center align-items-center d-flex'>
                                             <h4 className=' text-dark fs-5 my-3'>Enter Upline ID</h4>
-                                            <input type={'number'} className="boxset" onChange={(e) => {
+                                            <input type={'number'} className="boxset" 
+                                             onChange={(e) => {
                                                 setuid(e.target.value)
                                             }} />
                                             <div className=' mt-4'>
                                                 <button className="btn bt loginbtn px-3 mx-2" onClick={() => {
-                                                    let modelRegister = document.querySelector('.bordd')
+                                                    if(uid.length>0)
+                                                    {
+                                                        let modelRegister = document.querySelector('.bordd')
                                                     let modelRegisterR = document.querySelector('.bord')
 
                                                     modelRegister.classList.remove('d-none')
                                                     modelRegister.classList.add('d-flex')
                                                     modelRegisterR.classList.remove('d-flex')
                                                     modelRegisterR.classList.add('d-none')
+                                                    }
                                                 }}>OK</button>
                                                 <button className="btn bt loginbtn px-3 mx-2 " onClick={() => {
                                         let modelRegister = document.querySelector('.modelRegister')
@@ -169,7 +187,7 @@ function Register_main({ notify }) {
                                             <div className=' mt-4'>
                                                 <button className="btn bt loginbtn px-3 mx-2" onClick={async () => {
                                                     let position = document.getElementsByName('position')[0].value;
-                                                    await cotractCall(position.value)
+                                                    await cotractCall(position)
 
                                                     let modelRegister = document.querySelector('.modelRegister')
                                                     let modelRegisterR = document.querySelector('.bord')
@@ -186,7 +204,15 @@ function Register_main({ notify }) {
                                                     modelRegister.classList.add('d-none')
 
                                                 }}>Proceed</button>
-                                                <button className="btn bt loginbtn px-3 mx-2 ">No I want to change ID</button>
+                                                <button className="btn bt loginbtn px-3 mx-2 " onClick={()=>{
+                                                    let modelRegister = document.querySelector('.bordd')
+                                                    let modelRegisterR = document.querySelector('.bord')
+
+                                                    modelRegister.classList.remove('d-flex')
+                                                    modelRegister.classList.add('d-none')
+                                                    modelRegisterR.classList.remove('d-none')
+                                                    modelRegisterR.classList.add('d-flex')
+                                                }}>No I want to change ID</button>
                                             </div>
 
                                         </div>
@@ -197,6 +223,9 @@ function Register_main({ notify }) {
                                     <div className="btn log_batan" onClick={() => {
                                         callLoginApi()
                                     }}>Connect to Wallet</div>
+                                    <button className="btn log_batan" onClick={() => {
+                                        navigate('/Login_main')
+                                    }}>Login</button>
                                 </div>
                             </div>
             </div>

@@ -34,6 +34,10 @@ import 'react-toastify/dist/ReactToastify.css';
 // import Login from "./Components/Login/index"
 
 import { ToastContainer, toast } from 'react-toastify';
+import Pool_income from './Routes/All_Income/Pool_income';
+import Matics_tree from './Routes/Team_Details/Matics_tree';
+import { Activate } from './Routes/Activation/Activation';
+import Matics_Downline from './Routes/Team_Details/Matics_Downline';
 const notify = (msg) => toast(msg);
 
 function App() {
@@ -58,7 +62,9 @@ function App() {
           
           <Route exact path='Dashboard' element={<Navbar />} >
             <Route path='Home' element={ <Home /> } /> 
-            <Route path='Activate_History' element={<Activate_History />} />          
+            <Route path='Activate_History' element={<Activate_History />} />  
+            <Route path='Activate' element={<Activate />} />          
+
             <Route path='Staking_Details' element={<Staking_Details />} />                 
             <Route path='Profile' element={<Profile />} />
             {/* <Route path='/Referral_Income' element={<Referral_Income />} /> */}
@@ -69,13 +75,19 @@ function App() {
             <Route path='Matching_Income' element={<Matching_Income />} />
             <Route path='Reward_Income' element={<Reward_Income />} />
             <Route path='Roi_Income' element={<Roi_Income />} />
-            <Route path='Matching_Level_Income' element={<Matching_Level_Income />} />
+            <Route path='Registration_Roi_Income' element={<Matching_Level_Income />} />
+            <Route path='Pool_income' element={<Pool_income />} />
+            <Route path='Matics_Downline' element={<Matics_Downline />} />
+
+
             <Route path='Buy_NFT' element={<Buy_NFT />} />
             <Route path='Withdrawal_History' element={<Withdrawal_History />} />
             <Route path='Withdrawal' element={<Withdrawal />} />
             <Route path='Direct_Leg_Business' element={<Direct_Leg_Business />} />
             <Route path='Level_Details' element={<Level_Details />} />
             <Route path='Matching_Tree' element={<Matching_Tree />} />
+            <Route path='Matics_tree' element={<Matics_tree />} />
+
             <Route path='My_Referral' element={<My_Referral />} />
             <Route path='My_Team' element={<My_Team />} />
             <Route path='Coin_Address' element={<Coin_Address />} />

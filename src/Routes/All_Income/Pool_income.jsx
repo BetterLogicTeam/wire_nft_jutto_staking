@@ -1,8 +1,10 @@
+
+import moment from "moment";
 import { useEffect, useState } from "react";
 import {PagePath,Table, Table_Buttons} from "../../Components";
 import { API } from "../../Redux/actions/API";
 
-const Matching_Level_Income = () => {
+const Pool_income = () => {
 
     const [referralApi, setreferralApi] = useState([])
     const [currentPage, setcurrentPage] = useState(1)
@@ -16,7 +18,7 @@ const Matching_Level_Income = () => {
             let uId = ress?.uid;
        
 
-            let responce = await API?.get(`/registrationRoiIncome?id=${uId}`)
+            let responce = await API?.get(`/poolIncome?id=${uId}`)
             responce = responce?.data?.data;
 
             console.log("responce", responce);
@@ -26,10 +28,14 @@ const Matching_Level_Income = () => {
                 arr?.push({
                     sr: index + 1,
                     id: `${item?.uid} `,
-                    // token: `${item?.plan_amount} `,
-                    income_usd: `${item?.plan_amount} $`,
-                    // date:moment(item?.edate).format("M/D/YYYY h:m:s A")
-                    date: item?.edate
+                    fromid: `${item?.fromid} `,
+
+                    level: `${item?.level} `,
+                    package: `${item?.remark} `,
+
+                    income_usd: `${item?.income} `,
+                    date:moment(item?.ee).format("M/D/YYYY h:m:s A")
+                    // date: item?.edate
 
 
                 });
@@ -69,8 +75,12 @@ const Matching_Level_Income = () => {
     var [matching_level_income,set_matching_level_income]= new useState({
         cols:[
             { Header: 'S.No', accessor: 'sr' },
-            { Header: 'ID', accessor: 'id' },
-            // { Header: 'Package(USD)', accessor: 'token' },
+            { Header: 'User ID', accessor: 'id' },
+            { Header: 'From ID', accessor: 'fromid' },
+
+            { Header: 'Level', accessor: 'level' },
+            { Header: 'Remark', accessor: 'package' },
+
             { Header: 'Income(USD)', accessor: 'income_usd' },
             { Header: 'Date', accessor: 'date' }],
         rows:[
@@ -83,7 +93,7 @@ const Matching_Level_Income = () => {
     return ( 
         <div className="row justify-content-center">
             <div className="col-md-11 py-3">
-                <PagePath data={{page_name:"Registration Roi Income",page_path:"All Income / Registration Roi Income"}} />
+                <PagePath data={{page_name:"Pool Income",page_path:"All Income / Pool Income"}} />
                 {/* <div className="row my-4 align-items-end justify-content-center gy-4">
                     <div className="col-md-3 col-lg-2 col-8">
                         <p className="p-color p-0 m-0">Select Date</p>
@@ -110,4 +120,4 @@ const Matching_Level_Income = () => {
      );
 }
  
-export default Matching_Level_Income;
+export default Pool_income;

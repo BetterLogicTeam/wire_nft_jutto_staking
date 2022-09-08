@@ -133,7 +133,7 @@ const My_Team = () => {
             { Header: 'S.No', accessor: 'sr' },
             { Header: 'ID', accessor: 'id' },
             // { Header: 'Wallet', accessor: 'wallet' },
-            { Header: 'Date and Time', accessor: 'date_time' },
+            { Header: 'Reg Date and Time', accessor: 'date_time' },
             { Header: 'Remark', accessor: 'remark' },
             { Header: 'Activation Date Time', accessor: 'activation_date' },
             // { Header: 'Staking', accessor: 'staking' },
@@ -154,7 +154,7 @@ const My_Team = () => {
         <>
         <div className="" style={{padding:"5px 30px 5px 30px"}}>
         <div className="row justify-content-center">
-            <PagePath data={{ page_name: "My Referral", page_path: "Team Details / My Referral" }} />
+            <PagePath data={{ page_name: "My Team", page_path: "Team Details / My Team" }} />
             {/* <div className="row my-4 align-items-end justify-content-center gy-4">
                 <div className="col-md-4 col-lg-3 col-8">
                     <p className="p-color p-0 m-0">Select Date</p>

@@ -29,7 +29,7 @@ const Withdrawal_History = () => {
 
             let arr = []
             dataaa.forEach((item, index) => {
-                console.log("item", item);
+               
                 arr?.push({
                     sr: index + 1,
                     withdrawal_token: item?.withdrawal_token,
@@ -44,7 +44,7 @@ const Withdrawal_History = () => {
 
             }
             )
-            console.log("responce", arr);
+         
 
             setreferralApi(arr)
 
@@ -84,7 +84,8 @@ const Withdrawal_History = () => {
                     data={referralApi}
                     columns={withdrawal_history.cols}
                 />
-                <Table_Buttons data={{ first_value: '1', last_value: '10', current_value: '5' }} />
+                                    <Table_Buttons indexOfFirstPage={indexOfFirstPage} indexOfLastPost={indexOfLastPost} setcurrentPage={setcurrentPage} currentPage={currentPage} totalData={referralApi.length} listPerpage={listPerpage} />
+
             </div>
         </div>
     );

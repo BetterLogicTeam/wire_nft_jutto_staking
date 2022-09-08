@@ -13,11 +13,11 @@ const Total_Earning = (props) => {
             />
             <div className="row px-2">
                 <div className=" col-6 d-flex flex-column text-center">
-                    <h2 className="h3 h-color">{props.data.netbalance}</h2>
+                    <h2 className="h3 h-color">{`$ ${props.data.netbalance}`}</h2>
                     <p className="p-color">Net Balance</p>
                 </div>
                 <div className=" col-6 d-flex flex-column text-center">
-                    <h2 className="h3 h-color">{props.data.withdrawal}</h2>
+                    <h2 className="h3 h-color">{`$ ${props.data.withdrawal}`}</h2>
                     <p className="p-color">Total Withdrawal</p>
                 </div>
             </div>

@@ -60,6 +60,11 @@ background-color: rgb(172, 172, 172);
   color: white;
   border: 2px solid rgb(255 255 255 / 25%);
 }
+.input2{
+  padding: 0.5rem;
+  color: white;
+  border: 2px solid rgb(255 255 255 / 25%);
+}
 .shadow-withdraw
 {
   box-shadow: 0 0 1rem #dce1df;
@@ -171,4 +176,22 @@ background-color: rgb(172, 172, 172);
 .bg-b{
  background-color: #013779;
  width: 100%;
+}
+.LoaderSpinner{
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  top:0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, .7);
+}
+.matrixtreedrop{
+  width: fit-content;
+  height: 38px;
+}
+.pooldrop{  
+  height: 38px;
 }

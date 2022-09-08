@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from "react";
 import { PagePath } from "../../Components";
 import { API } from '../../Redux/actions/API'
@@ -10,14 +8,13 @@ import inactive_user from '../../assets/tree/user3red.png'
 import tree_image_small from '../../assets/tree/treeimg.png'
 import tree_image_medium from '../../assets/tree/treeimg1.png'
 import tree_image_large from '../../assets/tree/treeimg2.png'
-
-
+import {Spinner} from '../../Components'
 
 
 var bol = true;
 
 
-const Matics_tree = () => {
+const Matrics_tree = () => {
     const user = localStorage?.getItem("user");
 
     let ress = JSON.parse(user);
@@ -25,6 +22,8 @@ const Matics_tree = () => {
     // const [userdata, setuserdata] = new useState([])
     const [Idnumer, setIdnumer] = useState(uId)
     const [arrValue, setArrValue] = useState([])
+  const [loader,setloader] = useState(false)
+    const [PackgaeValue,setPackageValue] = useState(1);
 
 
     const [userdata, setuserdata] = new useState(
@@ -257,6 +256,7 @@ const Matics_tree = () => {
         ]
     )
     const referral_API = async () => {
+    setloader(true)
         try {
 
             // let ress = JSON?.parse(user);
@@ -265,10 +265,11 @@ const Matics_tree = () => {
 
         
 
-            let responce = await API?.post('/binary_tree',
+            let responce = await API?.post('/matrix_tree',
                 {
                     "uid": Idnumer,
-                    "usersession_uid": "1"
+                    "usersession_uid": "1",
+                    "package":PackgaeValue
                 }
             )
             responce = responce?.data?.data?.recordset;
@@ -308,6 +309,7 @@ const Matics_tree = () => {
         } catch (e) {
             // console.log("Error While calling Referrer API", e);
         }
+    setloader(false)
     }
     function addValue(value) {
 
@@ -342,17 +344,78 @@ const Matics_tree = () => {
     useEffect(() => {
         referral_API()
     }, [Idnumer])
-    
+    // React.useEffect(() => {
+    //     return (() => {
+    //         let team_info_div = document.querySelector('.team-info');
+    //         let team_info_div_data = document.querySelectorAll('.team-info p')
+    //         let user_img = document.querySelectorAll('.user-img');
+    //         for (let x = 0; x < 15; x++) {
+    //             user_img[x].addEventListener('mouseover', () => {
+    //                 team_info_div_data[0].innerHTML += userdata[x].registration_date;
+    //                 team_info_div_data[1].innerHTML += userdata[x].status;
+    //                 team_info_div_data[2].innerHTML += userdata[x].total_left;
+    //                 team_info_div_data[3].innerHTML += userdata[x].total_left_active;
+    //                 team_info_div_data[4].innerHTML += userdata[x].left_business;
+    //                 team_info_div_data[5].innerHTML += userdata[x].package_amount;
+    //                 team_info_div_data[6].innerHTML += userdata[x].topup_date;
+    //                 team_info_div_data[7].innerHTML += userdata[x].package;
+    //                 team_info_div_data[8].innerHTML += userdata[x].total_right;
+    //                 team_info_div_data[9].innerHTML += userdata[x].total_right_active;
+    //                 team_info_div_data[10].innerHTML += userdata[x].right_business;
+
+    //                 team_info_div.classList.remove('d-none');
+    //                 team_info_div.setAttribute('style', `top:${user_img[x].getBoundingClientRect().top + 50}px; left:${user_img[x].getBoundingClientRect().left + 50};`);
+    //             })
+    //             user_img[x].addEventListener('mouseout', () => {
+    //                 team_info_div_data[0].innerHTML = 'Registration Date :';
+    //                 team_info_div_data[1].innerHTML = 'Status :';
+    //                 team_info_div_data[2].innerHTML = 'Total Left :';
+    //                 team_info_div_data[3].innerHTML = 'Total Left Active :';
+    //                 team_info_div_data[4].innerHTML = 'Left Business :';
+    //                 team_info_div_data[5].innerHTML = 'Packgae Amount :';
+    //                 team_info_div_data[6].innerHTML = 'Topup Date: ';
+    //                 team_info_div_data[7].innerHTML = 'Packgae : ';
+    //                 team_info_div_data[8].innerHTML = 'Total Right : ';
+    //                 team_info_div_data[9].innerHTML = 'Total Right Active : ';
+    //                 team_info_div_data[10].innerHTML = 'Right Business : ';
+    //                 team_info_div.classList.add('d-none');
+    //             })
+    //         }
+    //     })
+    // }, [])
 
     return (
         <div className="row justify-content-center">
+            { loader == true ? <Spinner /> : <></>}
             <div className="col-md-11 py-3">
                 <PagePath data={{ page_name: "Matrix Tree", page_path: "Team Details / Matrix Tree" }} />
                 <div className="col-12 row justify-content-center py-5">
-                    <div className="col-md-4 col-10 gy-2 py-2 col-lg-5 row profile-border justify-content-center align-items-center profile-login">
-                        <input type="text" className="p-2 my-2 mx-3 profile-border col-10 col-md-10 col-lg-4 col-xl-6" value={Idnumer} />
-                        <button className="btn btn-success col-7 col-md-4 col-lg-3 col-xl-2">Submit</button>
-                        <button className="ms-md-3 btn btn-danger col-7 col-md-6 col-lg-3 col-xl-2" onClick={popoutvalue}>Go Back</button>
+                    <div className="col-md-6 col-10 gy-2 py-2 col-lg-4 row profile-border justify-content-center align-items-center profile-login">
+                        {/* <input type="text" className="p-2 my-2 mx-3 profile-border col-10 col-md-10 col-lg-4 " value={Idnumer} /> */}
+                        <select className="p-2 my-2 mx-3 profile-border col-10 col-md-10 col-lg-7" onChange={(e)=>{
+                            setPackageValue(e.target.value)
+                            console.log('PAckageValue',PackgaeValue)
+                        }}>
+                            <option value={1}>Pool 1</option>
+                            <option value={2}>Pool 2</option>
+                            <option value={3}>Pool 3</option>
+                            <option value={4}>Pool 4</option>
+                            <option value={5}>Pool 5</option>
+                            <option value={6}>Pool 6</option>
+                            <option value={7}>Pool 7</option>
+                            <option value={8}>Pool 8</option>
+                            <option value={9}>Pool 9</option>
+                            <option value={10}>Pool 10</option>
+                            <option value={11}>Pool 11</option>
+                            <option value={12}>Pool 12</option>
+                            <option value={13}>Pool 13</option>
+                            <option value={14}>Pool 14</option>
+                            <option value={15}>Pool 15</option>
+                        </select>
+                        <button className="btn btn-success col-7 col-md-4 col-lg-3 col-xl-2" onClick={()=>{
+                            referral_API()
+                        }}>Submit</button>
+                        {/* <button className="ms-md-3 btn btn-danger col-7 col-md-6 col-lg-3 col-xl-2" onClick={popoutvalue}>Go Back</button> */}
                     </div>
                     <div className="page-wrapper">
                         <div className="page-content">
@@ -396,7 +459,7 @@ const Matics_tree = () => {
 
                                                         {userdata[0]?.id}
                                                     </div>
-                                                                                                    </div>
+                                                </div>
                                             </div>
 
                                             <div className="connecter1">
@@ -407,7 +470,7 @@ const Matics_tree = () => {
                                                 <div className="row_2_child">
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
-                                                            <img src={userdata[1].package >= 1 ? active_user : userdata[1].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[1].package >= 1 ? active_user : userdata[1].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[1].id), addValue(userdata[1].id))} className="abc" style={{ margin: "0 25px", cursor: "pointer" }} width="50" height="50" onclick="Image_Click()" />
                                                         </button>
                                                         <div className="span" style={{ color: "#fff" }}>
@@ -415,14 +478,13 @@ const Matics_tree = () => {
 
                                                             {userdata[1]?.id}
                                                         </div>
-                                                        
                                                     </div>
                                                 </div>
                                                 <div className="row_2_child">
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
 
-                                                            <img src={userdata[2].package >= 1 ? active_user : userdata[2].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[2].package >= 1 ? active_user : userdata[2].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[2].id), addValue(userdata[2].id))} className="abc" style={{ margin: "0 25px", cursor: "pointer" }} width="50" height="50" onclick="Image_Click()" />
                                                         </button>
                                                         <div className="span" style={{ color: "#fff" }}>
@@ -454,7 +516,7 @@ const Matics_tree = () => {
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
 
-                                                            <img src={userdata[3].package >= 1 ? active_user : userdata[3].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[3].package >= 1 ? active_user : userdata[3].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[3].id), addValue(userdata[3].id))} className="abc" width="50" height="50" onclick="Image_Click()" />
                                                         </button>
                                                         <div className="span" style={{ color: "#fff" }}>
@@ -462,14 +524,13 @@ const Matics_tree = () => {
 
                                                             {userdata[3]?.id}
                                                         </div>
-                                                        
                                                     </div>
                                                 </div>
                                                 <div className="row_3_child">
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
 
-                                                            <img src={userdata[4].package >= 1 ? active_user : userdata[4].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[4].package >= 1 ? active_user : userdata[4].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[4].id), addValue(userdata[4].id))} className="abc" width="50" height="50" onclick="Image_Click()" />
                                                         </button>
                                                         <div className="span" style={{ color: "#fff" }}>
@@ -477,14 +538,13 @@ const Matics_tree = () => {
 
                                                             {userdata[4]?.id}
                                                         </div>
-                                                        
                                                     </div>
                                                 </div>
                                                 <div className="row_3_child">
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
 
-                                                            <img src={userdata[5].package >= 1 ? active_user : userdata[5].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[5].package >= 1 ? active_user : userdata[5].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[5].id), addValue(userdata[5].id))} className="abc" width="50" height="50" onclick="Image_Click()" />
                                                         </button>
 
@@ -493,14 +553,13 @@ const Matics_tree = () => {
 
                                                             {userdata[5]?.id}
                                                         </div>
-                                                       
                                                     </div>
                                                 </div>
                                                 <div className="row_3_child">
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
 
-                                                            <img src={userdata[6].package >= 1 ? active_user : userdata[6].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[6].package >= 1 ? active_user : userdata[6].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[6].id), addValue(userdata[6].id))} className="abc" width="50" height="50" onclick="Image_Click()" />
                                                         </button>
                                                         <div className="span" style={{ color: "#fff" }}>
@@ -508,12 +567,11 @@ const Matics_tree = () => {
 
                                                             {userdata[6]?.id}
                                                         </div>
-                                                       
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div className="tree_row" style={{ height: "27px" }}>
+                                            {/* <div className="tree_row" style={{ height: "27px" }}>
                                                 <div className="row_3_child" style={{ height: "27px" }}>
                                                     <img src={tree_image_large} style={{ width: "129px", height: "27px" }} />
                                                 </div>
@@ -532,7 +590,7 @@ const Matics_tree = () => {
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
 
-                                                            <img src={userdata[7].package >= 1 ? active_user : userdata[7].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[7].package >= 1 ? active_user : userdata[7].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[7].id), addValue(userdata[7].id))} className="abc" width="50" height="50" onclick="Image_Click()" />
                                                         </button>
                                                         <div className="span" style={{ color: "#fff" }}>
@@ -540,7 +598,6 @@ const Matics_tree = () => {
 
                                                             {userdata[7]?.id}
                                                         </div>
-                                                        
                                                     </div>
 
                                                 </div>
@@ -548,7 +605,7 @@ const Matics_tree = () => {
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
 
-                                                            <img src={userdata[8].package >= 1 ? active_user : userdata[8].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[8].package >= 1 ? active_user : userdata[8].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[8].id), addValue(userdata[8].id))} className="abc" width="50" height="50" onclick="Image_Click()" />
                                                         </button>
                                                         <div className="span" style={{ color: "#fff" }}>
@@ -556,7 +613,6 @@ const Matics_tree = () => {
 
                                                             {userdata[8]?.id}
                                                         </div>
-                                                      
                                                     </div>
 
                                                 </div>
@@ -564,7 +620,7 @@ const Matics_tree = () => {
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
 
-                                                            <img src={userdata[9].package >= 1 ? active_user : userdata[9].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[9].package >= 1 ? active_user : userdata[9].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[9].id), addValue(userdata[9].id))} className="abc" width="50" height="50" onclick="Image_Click()" />
                                                         </button>
                                                         <div className="span" style={{ color: "#fff" }}>
@@ -572,7 +628,6 @@ const Matics_tree = () => {
 
                                                             {userdata[9]?.id}
                                                         </div>
-                                                       
                                                     </div>
 
                                                 </div>
@@ -580,7 +635,7 @@ const Matics_tree = () => {
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
 
-                                                            <img src={userdata[10].package >= 1 ? active_user : userdata[10].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[10].package >= 1 ? active_user : userdata[10].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[10].id), addValue(userdata[10].id))} className="abc" width="50" height="50" onclick="Image_Click()" />
                                                         </button>
                                                         <div className="span" style={{ color: "#fff" }}>
@@ -588,7 +643,6 @@ const Matics_tree = () => {
 
                                                             {userdata[10]?.id}
                                                         </div>
-                                                       
                                                     </div>
 
                                                 </div>
@@ -596,7 +650,7 @@ const Matics_tree = () => {
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
 
-                                                            <img src={userdata[11].package >= 1 ? active_user : userdata[11].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[11].package >= 1 ? active_user : userdata[11].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[11].id), addValue(userdata[11].id))} className="abc" width="50" height="50" onclick="Image_Click()" />
                                                         </button>
                                                         <div className="span" style={{ color: "#fff" }}>
@@ -604,7 +658,6 @@ const Matics_tree = () => {
 
                                                             {userdata[11]?.id}
                                                         </div>
-                                                      
                                                     </div>
 
                                                 </div>
@@ -612,7 +665,7 @@ const Matics_tree = () => {
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
 
-                                                            <img src={userdata[12].package >= 1 ? active_user : userdata[12].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[12].package >= 1 ? active_user : userdata[12].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[12].id), addValue(userdata[12].id))} className="abc" width="50" height="50" onclick="Image_Click()" />
                                                         </button>
                                                         <div className="span" style={{ color: "#fff" }}>
@@ -620,7 +673,6 @@ const Matics_tree = () => {
 
                                                             {userdata[12]?.id}
                                                         </div>
-                                                        
                                                     </div>
 
                                                 </div>
@@ -628,7 +680,7 @@ const Matics_tree = () => {
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
 
-                                                            <img src={userdata[13].package >= 1 ? active_user : userdata[13].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[13].package >= 1 ? active_user : userdata[13].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[13].id), addValue(userdata[13].id))} className="abc" width="50" height="50" onclick="Image_Click()" />
                                                         </button>
                                                         <div className="span" style={{ color: "#fff" }}>
@@ -636,7 +688,6 @@ const Matics_tree = () => {
 
                                                             {userdata[13]?.id}
                                                         </div>
-                                                     
                                                     </div>
 
                                                 </div>
@@ -644,7 +695,7 @@ const Matics_tree = () => {
                                                     <div className="dropdown">
                                                         <button className="dropbtn">
 
-                                                            <img src={userdata[14].package >= 1 ? active_user : userdata[14].name !== "" ? inactive_user : default_image}
+                                                            <img src={userdata[14].package >= 1 ? active_user : userdata[14].package == 0 ? inactive_user : default_image}
                                                                 onClick={() => (setIdnumer(userdata[14].id), addValue(userdata[14].id))} className="abc" width="50" height="50" onclick="Image_Click()" />
                                                         </button>
                                                         <div className="span" style={{ color: "#fff" }}>
@@ -652,11 +703,10 @@ const Matics_tree = () => {
 
                                                             {userdata[14]?.id}
                                                         </div>
-                                                        
                                                     </div>
 
                                                 </div>
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                 </div>
@@ -795,4 +845,4 @@ const Matics_tree = () => {
     );
 }
 
-export default Matics_tree;
+export default Matrics_tree;

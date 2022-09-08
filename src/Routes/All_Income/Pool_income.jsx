@@ -9,6 +9,8 @@ const Pool_income = () => {
     const [referralApi, setreferralApi] = useState([])
     const [currentPage, setcurrentPage] = useState(1)
     const [listPerpage, setlistPerpage] = useState(10)
+    const [PackgaeValue,setPackageValue] = useState(0);
+
 
     const referral_API = async () => {
         try {
@@ -17,8 +19,9 @@ const Pool_income = () => {
             let ress = JSON?.parse(user);
             let uId = ress?.uid;
        
-
-            let responce = await API?.get(`/poolIncome?id=${uId}`)
+            
+            console.log('PAckageValue',`/poolIncome?id=${uId}&package=${PackgaeValue}`)
+            let responce = await API?.get(`/poolIncome?id=${uId}&package=${PackgaeValue}`)
             responce = responce?.data?.data;
 
             console.log("responce", responce);
@@ -94,6 +97,31 @@ const Pool_income = () => {
         <div className="row justify-content-center">
             <div className="col-md-11 py-3">
                 <PagePath data={{page_name:"Pool Income",page_path:"All Income / Pool Income"}} />
+                <div className=" row mx-0 my-3 gap-3 justify-content-center">
+                <select className="input2 bg-color col-8 col-md-4" onChange={(e)=>{
+                            setPackageValue(e.target.value)
+                        }}>
+
+                            <option value={0}>All Pool</option>
+                            <option value={1}>Pool 1</option>
+                            <option value={2}>Pool 2</option>
+                            <option value={3}>Pool 3</option>
+                            <option value={4}>Pool 4</option>
+                            <option value={5}>Pool 5</option>
+                            <option value={6}>Pool 6</option>
+                            <option value={7}>Pool 7</option>
+                            <option value={8}>Pool 8</option>
+                            <option value={9}>Pool 9</option>
+                            <option value={10}>Pool 10</option>
+                            <option value={11}>Pool 11</option>
+                            <option value={12}>Pool 12</option>
+                            <option value={13}>Pool 13</option>
+                            <option value={14}>Pool 14</option>
+                            <option value={15}>Pool 15</option>
+                        </select>
+                <button className="btn btn-success ms-md-4 col-6 col-md-2" onClick={()=>{
+                            referral_API() }}> Search</button>
+                </div>
                 {/* <div className="row my-4 align-items-end justify-content-center gy-4">
                     <div className="col-md-3 col-lg-2 col-8">
                         <p className="p-color p-0 m-0">Select Date</p>

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { useState } from 'react';
-import { All_Participates, Joining, Total_Earning, All_Income, Earned_Wire, Earned_USD, Id_Number, Profit } from '../../Components';
+import {Spinner, All_Participates, Joining, Total_Earning, All_Income, Earned_Wire, Earned_USD, Id_Number, Profit } from '../../Components';
 import './Dashboard.css'
 
 import { API } from "../../Redux/actions/API";
@@ -17,8 +17,9 @@ import Affiliate from '../../Components/Affiliate_Link/Affiliate';
 
 
 
-
 const Dashboard = () => {
+
+  const [loader,setloader] = useState(false)
 
   let [earn, setearn] = useState()
   const [netBalance, setnetBalance] = useState()
@@ -26,7 +27,7 @@ const Dashboard = () => {
   const [uID, setuID] = useState()
   const [referral, setReferral] = useState()
   const [matchingicome, setmatchingicome] = useState()
-  const [roiIncome, setroiIncome] = useState()
+  const [roiIncome, setroiIncome] = useState(0)
   const [earnAmount, setearnAmount] = useState()
   const [TotalAmount, setTotalAmount] = useState(0);
   const [MaxIncome, setMaxIncome] = useState(0);
@@ -58,7 +59,6 @@ const Dashboard = () => {
   const [rewardName, setRewardName] = useState();
 
 
-
   const dashboard = useSelector((state) => state?.dashboard);
   // const user = localStorage.getItem("user");
   let user = localStorage.getItem('user')
@@ -80,8 +80,9 @@ console.log("Usererrr",uId);
 
 
   useEffect(() => {
-
+    setloader(true)
     getAllData();
+    setloader(false)
   }, []);
 
   const DashboardAPI = async () => {
@@ -117,9 +118,11 @@ console.log("Usererrr",uId);
       // Matching Income------------------------
       setmatchingicome(res.activation_binary_income)
       // ROI Income---------------------
+      console.log('ApiRes',res)
       setroiIncome(res.registration_roi_income)
       // Your total earning----------------------
-      setearnAmount(res.MaxIncome)
+      // setearnAmount(res.MaxIncome)
+       setearnAmount(res.EarnAmount)
       // out of ---------------------------------
       setTotalAmount(res.tt)
       setjoinhere(res.activatupgradeamnt)
@@ -151,7 +154,7 @@ console.log("Usererrr",uId);
       // Matching Income------------------------
       setRdirectIncome(res.registration_directIncome);
       // ROI Income---------------------
-      setroiIncome(res.roiincome);
+      setroiIncome(res.registration_roi_income);
       setBinaryIncome(res.activation_binary_income);
       setDividend_income(res.activation_roi_income);
       setRank_yield_income(res.activation_direct_income);
@@ -175,12 +178,10 @@ console.log("Usererrr",uId);
 
 
   useEffect(() => {
+    setloader(true)
     DashboardAPI()
-
+    setloader(false)
   }, [])
-
-
-
 
   const IDHERE = localStorage.getItem("ID");
   console.log("totalEarning", user);
@@ -523,6 +524,7 @@ console.log("Usererrr",uId);
 
   return (
     <div className='Dashboard row m-0 justify-content-center pt-5 '>
+            { loader == true ? <Spinner /> : <></>}
       <div className=' row col-11 justify-content-center align-items-start gap-3'>
         <div className='col-lg-3 row m-0 p-0 gap-3'>
           <div className=''>
@@ -597,7 +599,7 @@ console.log("Usererrr",uId);
         </div>
         <div className='col-lg-5 mb-5 mt-4'>
           {/* <Profit data={{ earned: `${earnAmount}`, earned_outof: '1500', maxIncome: `${MaxIncome}`, EarnAmount: EarnAmount }} opt={profit} /> */}
-          <Profit data={{ earned: `${earnAmount}`, earned_outof: '1500', maxIncome: `${MaxIncome}`, EarnAmount: EarnAmount }} opt={profit} />
+          <Profit data={{ earned: `${earnAmount}`, earned_outof: `${MaxIncome}`, maxIncome: `${MaxIncome}`, EarnAmount: EarnAmount }} opt={profit} />
         </div>
       </div>
     </div>

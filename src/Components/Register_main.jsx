@@ -8,8 +8,10 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { tokenAddress, tokenAbi } from '../Utils/token'
 import { contractAddress, contractAbi } from '../Utils/contract'
+import { Spinner } from './';
 import { toast } from 'react-toastify';
 function Register_main({ notify }) {
+  const [loader,setloader] = useState(false)
     const navigate = useNavigate();
     let [matic, setmatic] = useState(0)
     let [ule, setule] = useState(0)
@@ -18,6 +20,7 @@ function Register_main({ notify }) {
     const [connected, setconnected] = useState('MetaMask is not connected..!..Wait...')
 
     const callapi = async (position,sellCall) => {
+    setloader(true)
 
 console.log("position",position);
         let res = await axios.post('https://ulematic-api.herokuapp.com/registration',
@@ -46,8 +49,10 @@ console.log("position",position);
        }, 50000);
 
         }
+    setloader(false)
     }
     const callLoginApi = async () => {
+    setloader(true)
         console.log("address",address)
         let res = await axios.get(`https://ulematic-api.herokuapp.com/login?id='${address}'`);
         console.log("login_data",res)
@@ -63,6 +68,7 @@ console.log("position",position);
             toast.error("Something went wrong ! ");
       
           }
+    setloader(false)
     }
     const ConnectToMetaMask = async () => {
         let acc = await loadWeb3();
@@ -76,8 +82,10 @@ console.log("position",position);
             setaddress(acc)
             setconnected('MetaMask is connected... Ready To Register')
         }
+
     }
     const cotractCall = async (position) => {
+    setloader(true)
         let acc = await loadWeb3();
         if (acc == 'No Wallet') {
             toast.error('No Wallet')
@@ -108,10 +116,12 @@ console.log("position",position);
             }
 
         }
+    setloader(false)
     }
     const callMaticUrliApi = async () => {
         let res = await axios.get(`https://ulematic.herokuapp.com/live_rate_matic`);
         setmatic((Number(res.data.data[0].usdperunit) * 10))
+
 
     }
     const callUleApi = async () => {
@@ -122,21 +132,25 @@ console.log("position",position);
     }
 
     useEffect(() => {
+    setloader(true)
         ConnectToMetaMask();
         callUleApi();
         callMaticUrliApi();
+        
+    setloader(false)
     }, [])
 
     return (
 
         <div className='row m-0 justify-content-center align-items-center' style={{height:'100vh'}}>
+            { loader == true ? <Spinner /> : <></>}
             <div className=' col-md-5 col-lg-3 bg-white  mainForm'>
             <div className="main_form p-5">
                                 <h2 className='hh mb-3'>Registration</h2>
                                 <p className='peera'>Automatic login if you have MetaMask wallet:</p>
 
-                                <img src="smiley.png" width="70px" alt="" />
-                { connected=='MetaMask is not connected..!..Wait...' ? <p className='peera2' style={{color:'red'}}>{connected}</p> : <p className='peera2' style={{color:'green'}}>{connected}</p>}
+                                <img src="smiley.png" width="150px" alt="" />
+                { connected=='MetaMask is not connected..!..Wait...' ? <p className='peera2 pt-3' style={{color:'red'}}>{connected}</p> : <p className='peera2 pt-3' style={{color:'green'}}>{connected}</p>}
                                 
 
                                 <div className="batan">

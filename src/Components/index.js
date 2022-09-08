@@ -9,3 +9,4 @@ export {default as Profit} from './Profit/Profit';
 export {default as PagePath} from './PagePath/PagePath';
 export {default as Table} from './Table/Table';
 export {default as Table_Buttons} from './Table_Buttons/Table_Button'
+export {default as Spinner} from './Spinner/Spinner'

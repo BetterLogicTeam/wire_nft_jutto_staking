@@ -7,7 +7,7 @@ const Profit = (props) => {
             <div className="col-lg-6">
                 <Chart
                     options={props.opt.options}
-                    series={[500]}
+                    series={[300]}
                     type="radialBar"
                     height={'300'}
                 />
@@ -15,11 +15,11 @@ const Profit = (props) => {
             <div className="col-lg-6">
                 <Chart
                     options={props.opt.options}
-                    series={[((props.data.EarnAmount / props.data.earned_outof) * 500).toFixed(0)]}
+                    series={[((props.data.earned / props.data.earned_outof) * 100).toFixed(0)]}
                     type="radialBar"
                     height={'300'}
                 />
-                <p className="p-color text-center">Your total earning is {props.data.EarnAmount} USD out of {props.data.earned_outof} USD (Your earned {(props.data.maxIncome)} out of 300% of your investment )</p>
+                <p className="p-color text-center">Your total earning is {props.data.earned} USD out of {props.data.earned_outof} USD (Your earned {((props.data.earned / props.data.earned_outof) * 100).toFixed(0)}% out of 300% of your investment )</p>
             </div>
 
 

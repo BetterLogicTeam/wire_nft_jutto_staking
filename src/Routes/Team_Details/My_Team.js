@@ -46,6 +46,7 @@ const My_Team = () => {
                     amount: item?.income,
                     id: item?.user_id,
                     date_time: item?.edate,
+                    pkg:`${item.packagename}`,
 
                     activation_date: item?.top_update
 
@@ -95,7 +96,7 @@ const My_Team = () => {
                     amount: item?.income,
                     id: item?.user_id,
                     date_time: item?.edate,
-
+                    pkg:`${item.packagename}`,
                     activation_date: item?.top_update
 
                 });
@@ -132,6 +133,7 @@ const My_Team = () => {
         cols: [
             { Header: 'S.No', accessor: 'sr' },
             { Header: 'ID', accessor: 'id' },
+            { Header: 'Package', accessor:'pkg'},
             // { Header: 'Wallet', accessor: 'wallet' },
             { Header: 'Reg Date and Time', accessor: 'date_time' },
             { Header: 'Remark', accessor: 'remark' },

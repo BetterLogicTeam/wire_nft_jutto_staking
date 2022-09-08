@@ -5,15 +5,19 @@ import { Link } from "react-router-dom";
 import './Login_main.css'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Spinner } from './';
 import { toast } from 'react-toastify';
 var bol = false;
 function Login_main({ notify }) {
   const navigate = useNavigate();
+  const [loader,setloader] = useState(false)
   const [uid, setuid] = useState();
   const [address, setaddress] = useState('');
   const [connected, setconnected] = useState('MetaMask is not connected..!..Wait...')
 
   const callapi = async () => {
+    setloader(true)
+
     if(uid.length>6){
       let res = await axios.get(`https://ulematic-api.herokuapp.com/login?id='${uid}'`);
       console.log("logindata",res.data.data)
@@ -41,12 +45,13 @@ function Login_main({ notify }) {
   
       }
     }
-   
+    setloader(false) 
 
   }
 
   const ConnectToMetaMask = async () => {
 
+    setloader(true)
 
     let acc = await loadWeb3();
   
@@ -63,6 +68,7 @@ function Login_main({ notify }) {
       setaddress(acc)
       setconnected('MetaMask is connected... Ready To Go')
     }
+    setloader(false)
 
   }
 
@@ -72,13 +78,14 @@ function Login_main({ notify }) {
   }, [uid])
   return (
     <div className='row m-0 justify-content-center align-items-center' style={{height:'100vh'}}>
+            { loader == true ? <Spinner /> : <></>}
             <div className=' col-md-4 col-lg-3 bg-white  mainForm'>
             <div className="main_form  p-5">
                 <h2 className='hh mb-3'>Login</h2>
                 <p className='peera'>Automatic login if you have MetaMask wallet:</p>
 
-                <img src="metamask.png" width="70px" alt="" />
-                { connected=='MetaMask is not connected..!..Wait...' ? <p className='peera2' style={{color:'red'}}>{connected}</p> : <p className='peera2' style={{color:'green'}}>{connected}</p>}
+                <img src="metamask.png" width="150px" alt="" />
+                { connected=='MetaMask is not connected..!..Wait...' ? <p className='peera2 pt-3' style={{color:'red'}}>{connected}</p> : <p className='peera2 pt-3' style={{color:'green'}}>{connected}</p>}
 
                 <div className="batan">
                   <div className="btn log_batan" onClick={ConnectToMetaMask}>Automatic Login</div>

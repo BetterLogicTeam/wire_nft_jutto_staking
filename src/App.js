@@ -1,6 +1,5 @@
 import logo from './logo.svg';
 import './App.css';
-
 import {Home,Activate_History,Staking_Details,Profile, Referral_Income, Matching_Income,Reward_Income, Roi_Income, Matching_Level_Income, Buy_NFT, Withdrawal_History, Withdrawal, Direct_Leg_Business, Matching_Tree, My_Referral, My_Team, Coin_Address, NFT_Address, Self_Address,Level_Details} from './Routes';
 import Registration_Direct_Income from './Routes/All_Income/Registration_Direct_Income';
 import Activation_Direct_Income from './Routes/All_Income/Activation_Direct_Income ';

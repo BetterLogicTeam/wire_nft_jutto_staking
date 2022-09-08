@@ -8,8 +8,7 @@ import inactive_user from '../../assets/tree/user3red.png'
 import tree_image_small from '../../assets/tree/treeimg.png'
 import tree_image_medium from '../../assets/tree/treeimg1.png'
 import tree_image_large from '../../assets/tree/treeimg2.png'
-
-
+import {Spinner} from '../../Components'
 
 
 var bol = true;
@@ -23,6 +22,8 @@ const Matching_Tree = () => {
     // const [userdata, setuserdata] = new useState([])
     const [Idnumer, setIdnumer] = useState(uId)
     const [arrValue, setArrValue] = useState([])
+  const [loader,setloader] = useState(false)
+
 
 
     const [userdata, setuserdata] = new useState(
@@ -255,6 +256,7 @@ const Matching_Tree = () => {
         ]
     )
     const referral_API = async () => {
+    setloader(true)
         try {
 
             // let ress = JSON?.parse(user);
@@ -306,6 +308,7 @@ const Matching_Tree = () => {
         } catch (e) {
             // console.log("Error While calling Referrer API", e);
         }
+    setloader(false)
     }
     function addValue(value) {
 
@@ -382,6 +385,7 @@ const Matching_Tree = () => {
 
     return (
         <div className="row justify-content-center">
+            { loader == true ? <Spinner /> : <></>}
             <div className="col-md-11 py-3">
                 <PagePath data={{ page_name: "Matching Tree", page_path: "Team Details / Matching Tree" }} />
                 <div className="col-12 row justify-content-center py-5">

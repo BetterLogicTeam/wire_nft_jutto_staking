@@ -58,7 +58,9 @@ function CollapsibleExample() {
               </Link>
             </Nav.Link>
             <Nav.Link href="#pricing">
-              <img src="metamask.png" width="40px" alt="" />
+            <Link to="/Login_main">
+              <img src="metamaskU.png" width="40px" alt="" />
+              </Link>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

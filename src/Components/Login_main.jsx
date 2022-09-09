@@ -19,6 +19,8 @@ function Login_main({ notify }) {
     setloader(true)
 
     if(uid.length>6){
+      console.log("logindata_Address",)
+
       let res = await axios.get(`https://ulematic-api.herokuapp.com/login?id='${uid}'`);
       console.log("logindata",res.data.data)
       if (res.data.data !== 0) {
@@ -84,7 +86,7 @@ function Login_main({ notify }) {
                 <h2 className='hh mb-3'>Login</h2>
                 <p className='peera'>Automatic login if you have MetaMask wallet:</p>
 
-                <img src="metamask.png" width="150px" alt="" />
+                <img src="favicon.png" width="150px" alt="" />
                 { connected=='MetaMask is not connected..!..Wait...' ? <p className='peera2 pt-3' style={{color:'red'}}>{connected}</p> : <p className='peera2 pt-3' style={{color:'green'}}>{connected}</p>}
 
                 <div className="batan">

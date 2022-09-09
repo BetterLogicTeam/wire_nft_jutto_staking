@@ -9193,10 +9193,10 @@
   "resolved" "https://registry.npmjs.org/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz"
   "version" "3.0.4"
 
-"react-loader-spinner@^5.3.3":
-  "integrity" "sha512-eEUmZBsVli0VAZwsUjeYHU0X3P/utv/Oz5zI8oQa0Xx+ttIZMXYa/WmqHoL2jmqPM01zGB3fyMZjs7xsl+uvRw=="
-  "resolved" "https://registry.npmjs.org/react-loader-spinner/-/react-loader-spinner-5.3.3.tgz"
-  "version" "5.3.3"
+"react-loader-spinner@^5.3.4":
+  "integrity" "sha512-G2vw4ssX+RDZ/vfaeva06yfNqyFViv/u+tVZ3kFLy5TKNlNx2DbuwreBSpRtPespQA+VxinxUJsigwLwG9erOg=="
+  "resolved" "https://registry.npmjs.org/react-loader-spinner/-/react-loader-spinner-5.3.4.tgz"
+  "version" "5.3.4"
   dependencies:
     "react-is" "^18.2.0"
     "styled-components" "^5.3.5"

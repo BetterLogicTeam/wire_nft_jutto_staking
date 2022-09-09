@@ -149,7 +149,7 @@ console.log("position",position);
                                 <h2 className='hh mb-3'>Registration</h2>
                                 <p className='peera'>Automatic login if you have MetaMask wallet:</p>
 
-                                <img src="smiley.png" width="150px" alt="" />
+                                <img src="favicon.png" width="150px" alt="" />
                 { connected=='MetaMask is not connected..!..Wait...' ? <p className='peera2 pt-3' style={{color:'red'}}>{connected}</p> : <p className='peera2 pt-3' style={{color:'green'}}>{connected}</p>}
                                 
 
